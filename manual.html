@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SawDust User Manual</title>
+<style>
+  :root {
+    --ink: #2a2622;
+    --muted: #6b6358;
+    --paper: #fdfbf7;
+    --panel: #f3eee3;
+    --line: #d8d2c6;
+    --accent: #557068;
+    --wood: #c97732;
+    --code-bg: #efe9db;
+    --warn: #8a3b2a;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+  }
+  .layout { display: flex; align-items: flex-start; max-width: 1100px; margin: 0 auto; }
+  nav.toc {
+    position: sticky;
+    top: 0;
+    flex: 0 0 220px;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 24px 12px 24px 20px;
+    border-right: 1px solid var(--line);
+    font-size: 13px;
+  }
+  nav.toc a { display: block; color: var(--accent); text-decoration: none; padding: 3px 0; }
+  nav.toc a:hover { text-decoration: underline; }
+  nav.toc .toc-title { font-weight: 600; color: var(--ink); margin-bottom: 8px; font-size: 15px; }
+  main { flex: 1 1 auto; padding: 32px 40px 80px; min-width: 0; }
+  h1 { font-size: 30px; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); margin: 0 0 32px; font-size: 15px; }
+  h2 {
+    font-size: 22px;
+    margin: 48px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--wood);
+  }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 16px; margin: 24px 0 8px; color: var(--accent); }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  code, kbd {
+    font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+    background: var(--code-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 0.92em;
+  }
+  kbd { border: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0 20px; font-size: 14px; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--panel); font-weight: 600; }
+  .note {
+    background: var(--panel);
+    border-left: 4px solid var(--accent);
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+  }
+  .warn {
+    background: #f6e9e4;
+    border-left: 4px solid var(--warn);
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+  }
+  .menu-path { font-weight: 600; }
+  hr.section-end { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  footer { color: var(--muted); font-size: 12px; margin-top: 60px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+  @media print {
+    nav.toc { display: none; }
+    .layout { display: block; max-width: none; }
+    main { padding: 0; }
+    a { color: inherit; text-decoration: none; }
+    h2 { break-before: page; border-bottom-color: #999; }
+    h2:first-of-type { break-before: avoid; }
+    .note, .warn { border-left-color: #999; background: #f2f2f2; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<nav class="toc">
+  <div class="toc-title">SawDust Manual</div>
+  <a href="#getting-started">Getting started</a>
+  <a href="#main-window">The main window</a>
+  <a href="#change-log">The project change log</a>
+  <a href="#parts-properties">Parts &amp; properties</a>
+  <a href="#parameters-expressions">Parameters &amp; expressions</a>
+  <a href="#units">Units</a>
+  <a href="#placement-gizmo">Placement &amp; the gizmo</a>
+  <a href="#measure">Measure</a>
+  <a href="#selection">Selection</a>
+  <a href="#groups-layers">Groups &amp; layers</a>
+  <a href="#features-joinery">Features &amp; joinery</a>
+  <a href="#joints">Joints</a>
+  <a href="#edge-profiles-wraps">Edge profiles &amp; wraps</a>
+  <a href="#generators">Generators</a>
+  <a href="#shop-outputs">Shop outputs</a>
+  <a href="#hardware">Hardware</a>
+  <a href="#design-checks">Design checks</a>
+  <a href="#apprentice">The AI Apprentice</a>
+  <a href="#files-sidecars">Files &amp; sidecars</a>
+  <a href="#trial-purchase">Trial and purchase</a>
+  <a href="#keyboard-shortcuts">Keyboard shortcuts</a>
+  <a href="#troubleshooting">Troubleshooting</a>
+</nav>
+
+<main>
+<h1>SawDust User Manual</h1>
+<p class="subtitle">A parametric design tool for home woodworking projects — parts, joinery, shop outputs, and an AI Apprentice, all built from a single document you edit with real dimensions.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<h3>Installing</h3>
+<p>SawDust installs per-user — no administrator rights needed, and nothing outside your own profile is touched. Run the setup file and it installs into your own AppData folder and adds a Start Menu shortcut. Because the installer isn't digitally signed (this is a personal tool, not a commercial release), Windows SmartScreen will likely show a warning the first time you run it. Click <strong>More info</strong> and then <strong>Run anyway</strong> to proceed — that's expected, not a sign anything is wrong.</p>
+<p>Uninstalling removes the installed program files only. Your saved designs, settings, and the manual you're reading now all live under your own <code>AppData</code> folder and are left alone.</p>
+
+<h3>Starting a design</h3>
+<p>The <strong>Welcome window</strong> shows itself the first time you launch SawDust, and any time after via <span class="menu-path">Help → Welcome…</span>: six real, shipped designs to open and pull apart, your Recent list, and three ways in. <strong>Blank design</strong> is the same as <span class="menu-path">File → New</span>; <strong>Open…</strong> is the same as <span class="menu-path">File → Open…</span>; <strong>Read the guide</strong> opens this page at Getting started. Choosing a card opens that design as a new, unsaved document — its title carries "(sample)" until you save it somewhere, at which point it's yours, under whatever name you give it. <strong>Show at startup</strong> turns the window off (or back on) for next time; it's remembered immediately, not only when SawDust closes.</p>
+<p>The six samples, each built to teach one thing:</p>
+<ul>
+  <li><strong>Floating Shelf</strong> — the two-minute one: three boards and a single dado, with two named parameters to try changing.</li>
+  <li><strong>Bookcase</strong> — a parametric case: resize its width or height and watch the dadoed shelves and the grooved-in back follow.</li>
+  <li><strong>Base Cabinet</strong> — what <span class="menu-path">Edit → Insert Cabinet…</span> builds: a face frame, a drawer over doors, adjustable shelf pins.</li>
+  <li><strong>Workbench</strong> — mortise-and-tenon legs and stretchers under a single-part laminated top.</li>
+  <li><strong>Drawer Box</strong> — half-blind dovetail fronts, the joinery showcase.</li>
+  <li><strong>Dovetailed Box</strong> — a small through-dovetailed keepsake box with a plain, hinge-free lid — the hand-tool one.</li>
+</ul>
+<p><span class="menu-path">File → New</span> opens a blank project — no parts, no materials beyond the starter species library, ready for you to start adding stock. <span class="menu-path">File → Open…</span> loads an existing <code>.swdt</code> file, and <span class="menu-path">File → Open Recent</span> keeps a short list of the ones you've had open lately. <span class="menu-path">File → New From Photo…</span> is a different starting point entirely — see <a href="#apprentice">The AI Apprentice</a>.</p>
+<p><span class="menu-path">File → Save</span> (<kbd>Ctrl+S</kbd>) writes the document to its file; the first save (or <span class="menu-path">File → Save As…</span> any time after) asks where. The title bar's asterisk tells you when there are unsaved changes.</p>
+<p><span class="menu-path">File → Rename Project…</span> changes the design's own name — what shows atop the project tree and the Notes page — separately from its <code>.swdt</code> file name, which <span class="menu-path">File → Save As…</span> owns. Once you've saved, the title bar itself follows the file name rather than this one, the same way most Windows apps title their window.</p>
+
+<h3>A first project, start to finish</h3>
+<p>The fastest way to get oriented is to build something tiny:</p>
+<ol>
+  <li><span class="menu-path">File → New</span>, then <span class="menu-path">File → Add Part…</span> (also reachable from the Edit menu). Pick a stock preset — a piece of ¾" plywood or a length of 4/4 hardwood — and give it a length and width. It appears in the project tree and in the viewport.</li>
+  <li>Click the board in the viewport or the tree to select it. The <strong>Properties</strong> tab on the right lets you retype any dimension — try changing the length and watch the board resize.</li>
+  <li>Add a second part, then look at <a href="#joints">Joints</a> and <a href="#features-joinery">Features &amp; joinery</a> once you want to join the two together.</li>
+  <li><kbd>Ctrl+S</kbd> to save. You now have a real <code>.swdt</code> file.</li>
+</ol>
+<p>Everything from here — cut lists, cost estimates, shop drawings, the Apprentice — works the same way on a two-board sample as it does on a full piece of furniture.</p>
+
+<h3>What a <code>.swdt</code> file is</h3>
+<p>A <code>.swdt</code> file is a single, human-readable text document — parts, their dimensions (which can be plain numbers or expressions), joints, materials, groups, and layers. Nothing about the 3D shape is stored directly; every time you open or edit a design, SawDust regenerates the geometry from that data. That's what makes editing a dimension months later still produce a correct model, and it's why a <code>.swdt</code> file stays small even for a fairly involved project. A design may travel with a few sidecar files alongside it — see <a href="#files-sidecars">Files &amp; sidecars</a>.</p>
+
+<hr class="section-end">
+<h2 id="main-window">The main window</h2>
+
+<p>The window is built from a few areas that stay in the same place no matter what you're working on:</p>
+
+<h3>The viewport</h3>
+<p>The center pane is a 3D view of your design. Drag with the right mouse button to orbit, <kbd>Shift</kbd>+right-drag or a middle-drag to pan, and the mouse wheel to zoom in on wherever your cursor is pointing. <kbd>W A S D Q Z</kbd> fly the camera while the viewport has focus. <span class="menu-path">View → Reset View</span> (<kbd>Home</kbd>) snaps back to the default framing, and pressing <kbd>F</kbd> zooms to whatever's currently selected. A ground grid, sized to your project, gives you a sense of scale; <span class="menu-path">View → Scale Figure</span> adds a toggleable human silhouette (5'10") standing beside the model for a gut-check on real-world size — it's a viewport aid only and never shows up in drawings, cut lists, or exports.</p>
+
+<h3>Wood grain and the dark viewport</h3>
+<p>By default the viewport paints boards with a <strong>hint of wood grain</strong> — low-contrast streaks running along each part's length, fainter on plywood, and none at all on a material whose name says MDF or melamine. Turn to an end and the streaks run across it, the way rings cross a board's end. It's a look, not data: no species has its real figure here, nothing is measured from it, and it never reaches drawings, the sheet layout, the cut list or any export — paper stays paper. Hover, select, joint-member and warning highlights all read exactly as they do without it. <span class="menu-path">View → Wood Grain</span> turns it off for the flat, engineering look.</p>
+<p><span class="menu-path">View → Dark Viewport</span> puts the 3D canvas on a dark ground: the backdrop, the floor grid, the lighting and the on-screen chrome (face labels, the measure readout, the rubber band, the gizmo handles) all change to read against it. <strong>The boards do not</strong> — wood is wood, and a walnut shelf is the same walnut on either canvas. <strong>The rest of the window stays light</strong>, deliberately: menus, panels, the tree and the toolbar are unchanged. It's the canvas that's worth darkening, and it's the canvas this changes.</p>
+<p>Both toggles are also under <span class="menu-path">Tools → Options → Appearance</span>, and both are remembered across restarts.</p>
+
+<h3>Toolbar</h3>
+<p>A row of icon buttons sits under the menu, giving one-click access to the commands you reach for most — New, Open, Save, Undo/Redo, Add Part, and the rest of the shop-output windows. Hovering a button shows its name and keyboard shortcut, when it has one. A button greys out exactly when its matching menu item would — there's nothing here that isn't already on a menu somewhere.</p>
+<p><strong>Anything on a menu can go on the toolbar.</strong> The shipped strip is just a starting point: every command in the menu bar has a button waiting for it, from <span class="menu-path">File → Save As…</span> to <span class="menu-path">Help → About</span>. Checkable menu rows — Cut List, AI Apprentice, Change Log, Exploded, Scale Figure, Face Labels, Toolbar — become buttons that stay pressed while they're on, and toggling one from the toolbar is the same switch as toggling it from the menu. The only rows that can't move are the ones whose contents depend on your document — <span class="menu-path">File → Open Recent</span>, <span class="menu-path">Edit → Groups</span> and <span class="menu-path">Edit → Move to Layer</span> — since a button for "some group" wouldn't mean anything.</p>
+<p>Right-click the toolbar to show or hide individual buttons — they're listed under the menu each one normally lives on — or choose <strong>Customize…</strong> for the full picture: an Available/Shown pair of lists where you can add, remove, reorder, and drop in separators, plus <strong>Reset to Defaults</strong> if you want to start over. Available is grouped by menu and listed in menu order, so a command is where you'd expect to find it. If the window gets too narrow to show every button, a chevron at the end opens the rest in a popup. <span class="menu-path">View → Toolbar</span> hides the whole strip if you'd rather reclaim the space; your layout and visibility both come back exactly as you left them next time you open SawDust.</p>
+
+<h3>The project tree</h3>
+<p>On the left, every part in the project — organized by whatever group folders you've given them, plus any permanent groups (see <a href="#groups-layers">Groups &amp; layers</a>). Clicking a row selects the corresponding part in the viewport and vice versa; the two stay in sync. Groups you collapse or expand stay that way as you work: editing a part updates its row in place rather than rebuilding the tree, so a long project you've folded down to the section you're working on stays folded.</p>
+
+<h3>Docks, tabs and pins</h3>
+<p>Panels live in two docks. The <strong>right column</strong> holds six tabs, each editing one facet of whatever's selected (or of the whole project):</p>
+<ul>
+  <li><strong>Properties</strong> — dimensions, material, stock type, quantity, placement.</li>
+  <li><strong>Params</strong> — the project's named parameters (see <a href="#parameters-expressions">Parameters &amp; expressions</a>).</li>
+  <li><strong>Joints</strong> — the joints touching the selected part, and adding new ones.</li>
+  <li><strong>Materials</strong> — the species/material palette this project draws from.</li>
+  <li><strong>Layers</strong> — viewport visibility grouping (see <a href="#groups-layers">Groups &amp; layers</a>).</li>
+  <li><strong>Log</strong> — every step you've taken this session (see <a href="#change-log">The project change log</a>). Hidden until you switch it on from <span class="menu-path">View → Change Log</span>, so the strip stays at five tabs unless you want the sixth.</li>
+</ul>
+<p>The <strong>bottom dock</strong> holds two more, each switched on and off from the <span class="menu-path">View</span> menu:</p>
+<ul>
+  <li><strong>Cut List</strong> — a live summary of every board and sheet the current design needs, with cost and hardwood-purchase lines alongside it.</li>
+  <li><strong>AI Apprentice</strong> — the AI chat panel (see <a href="#apprentice">The AI Apprentice</a>).</li>
+</ul>
+<p>Both bottom panes share one dock and one splitter, so they share the height you drag it to; switching on a pane that was hidden brings its tab up in front. When neither is shown the dock isn't there at all — no strip, no splitter, and the 3D view has the room.</p>
+
+<p><strong>Every tab carries a pin in its header, and clicking it opens that panel in a window of its own.</strong> The tab leaves the strip while it's out; the panel itself is the same one, moved rather than rebuilt, so an Apprentice reply that's still streaming keeps streaming across the move. Each window remembers its own size and position — move and resize the Joints window, and that's where it opens the next time you unpin Joints, even after a restart. <strong>Closing the window is how you pin it back</strong>: the tab returns to the strip in its old place, selected. There's no second pin on the window itself.</p>
+<p>A dock with nothing left to show folds away — unpin every right-hand tab and the column goes, and the viewport takes the width until you close one of those windows. Pinning is per session by design: however you left things, every panel starts pinned in its dock the next time you open SawDust, and only the windows' sizes and positions are remembered.</p>
+<p>One thing worth knowing: the editor's keyboard shortcuts belong to the main window. <kbd>Del</kbd>, <kbd>F2</kbd>, <kbd>F</kbd> and <kbd>Home</kbd> act on the design while the main window has focus — a panel typing away in its own window doesn't forward them, so click back into the main window when you want them.</p>
+
+<h3>Editing a field, anywhere</h3>
+<p>Every text field in the app — a dimension, a parameter, a material property — commits its value on <kbd>Enter</kbd> or when you click away, and reverts to its last committed value on <kbd>Esc</kbd>. Nothing you type takes effect until you leave the field or press Enter, so a half-typed expression never breaks the model mid-keystroke.</p>
+<p>Start typing a parameter's name into any box that takes an expression — a dimension, a position, a feature's or joint's own parameter, a value on the Params tab, a dimension in the Add Part, Add Feature, Add Joint or Insert dialogs — and the matching parameters appear in a list just beneath the box, each with what it currently works out to. The list finds a name by any part of it, spelled with or without the spaces (<code>Left S</code> finds <code>HingeLeftSide</code>), so a longer, more descriptive name costs nothing to use. <kbd>Down</kbd> and <kbd>Up</kbd> move through the list, <kbd>Enter</kbd> or <kbd>Tab</kbd> drops the highlighted name into the box where you were typing (a click on a row does the same), and <kbd>Esc</kbd> closes the list without touching what you typed. Picking a name never commits the field or moves you on: press <kbd>Enter</kbd> again to commit, <kbd>Tab</kbd> again to move to the next box. Nothing is ever inserted until you pick.</p>
+
+<hr class="section-end">
+<h2 id="change-log">The project change log</h2>
+
+<p><kbd>Ctrl</kbd>+<kbd>Z</kbd> walks backwards one step at a time, which is fine until the step you want to undo is nine steps back and you'd rather keep the eight in front of it. The <strong>Log</strong> tab shows the whole chain instead — every step this session, oldest at the top, with the sessions before it grouped above — and lets you reach into the middle of it. Switch it on from <span class="menu-path">View → Change Log</span>; it's the right column's sixth tab and pins out into its own window like the rest.</p>
+
+<h3>Reading a row</h3>
+<p>The first row is always <strong>Opened</strong>: the design as it was when you started. Under it, one row per step, numbered, with the time it happened. A small <strong>▸</strong> marks where you are now; anything below that marker fades out and goes italic, meaning you've undone it and it isn't in the design at the moment. A row tagged <em>saved</em> is the state that matches the file on disk — the same information the <code>*</code> in the title bar carries, but you can see which step it is.</p>
+<p><strong>Hover a row for the detail.</strong> A step's name is the kind of edit it was — "Set Part Dimension", "Add Part" — so in a long session a lot of rows read alike. The tooltip is what tells them apart: which parts the step touched (by their current names), what a grouped step contains, the full date and time it ran, and whether it's currently undone or is the saved state. Parts deleted since the step ran are counted rather than named, because there's no name left to give them.</p>
+<p>Some rows have an expander. An Apprentice turn, an <span class="menu-path">Edit → Insert Drawer Box</span>, a gizmo drag — anything that made several edits at once — is <strong>one step</strong> here, because that's how it undoes. Expand it to see what it actually did, greyed alongside its parent. Those inner steps are there to read, not to act on: they undo and redo with the step that contains them.</p>
+<p>Clicking a row selects the parts that step touched, in the viewport and in the project tree — a quick way to answer "which board was that?" for a step you don't recognise. A step whose parts have all since been deleted (and the Opened row) selects nothing.</p>
+
+<h3>Going to a step</h3>
+<p>Double-click a row — or right-click it and choose <strong>Go to here</strong> — and the design becomes what it was <em>after</em> that step. Going backwards is the same as pressing <kbd>Ctrl</kbd>+<kbd>Z</kbd> that many times, and going forwards the same as <kbd>Ctrl</kbd>+<kbd>Y</kbd>, except that it happens in one move: the 3D view redraws once at the end rather than flickering through every state on the way. Double-clicking <strong>Opened</strong> takes you back to the empty start. Nothing is lost by doing this — the steps you passed are still in the log, greyed, and going forward again brings them back. Ordinary <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Y</kbd> keep working and the ▸ marker follows them.</p>
+
+<h3>Removing one step from the middle</h3>
+<p>Right-click a step and choose <strong>Remove this step…</strong> to take that one edit out and leave everything after it. Renamed a part, added three more, and then decided the rename was wrong? Remove the rename; the three parts stay, with the same ids, the same dimensions and the same joints.</p>
+<p>SawDust does this by undoing back to that step, skipping it, and re-running everything above it for real — so it finds out honestly whether the later steps still make sense without it. <strong>If any of them doesn't, nothing changes at all.</strong> You'll get a message naming the step that depends on the one you tried to remove, and the design and the log are exactly as they were. Removing "Add the shelf" when a later step set that shelf's length is the usual case, and it's refused for the obvious reason.</p>
+<p>A grouped step goes as a whole — you can't pull one edit out of an Apprentice turn — and only steps that are currently applied can be removed, so undo back past a step first if you want it gone rather than undone.</p>
+
+<h3>Keeping steps as they are</h3>
+<p>Right-click and choose <strong>Keep steps up to here…</strong> to drop everything from the top of the log down to that row. The design doesn't change by a hair: those edits stay exactly as they are. What changes is that they stop being undoable — <kbd>Ctrl</kbd>+<kbd>Z</kbd> now walks only the steps that are left. This is the "I'm happy with the carcase, stop letting me undo into it" gesture.</p>
+
+<h3>Two things to know</h3>
+<p><strong>Neither of these can be undone.</strong> Removing a step and keeping steps both rewrite the history itself, and there's no history left to record them in — which is why both ask first. Rewinding into an earlier session (below) is the third of the kind. Everything else on the Log tab is reversible: going to a step in this session is just undo and redo.</p>
+<p><strong>Joints don't re-derive themselves when you edit history.</strong> A history edit replays what actually happened, exactly as recorded — it never regenerates anything on its own, even with automatic joint regeneration switched on. If removing a step leaves a joint out of step with its boards, it says so with its usual stale badge and you regenerate it when you're ready.</p>
+
+<h3>Sessions and rewinding</h3>
+<p>The log outlives the session that made it. Every time you save, SawDust writes the steps you took beside the design as <code>&lt;your design&gt;.swdt.log.json</code> — a plain text file you can open and read — and the next time you open that design, those steps come back as a collapsed <strong>Session</strong> group above the live rows, newest nearest. Expand one to see the steps by name and time, exactly as you made them.</p>
+<p><strong>Rewinding.</strong> Double-click a step inside an earlier session — or right-click it and choose <strong>Go to here</strong> — and the whole design goes back to how it stood right after that step, however many sessions ago. SawDust does this by rebuilding the design from scratch: it loads the copy the session started from and re-runs its steps through the real editing machinery, on its own private copy first. If a step can't run, you get a message naming it and <em>nothing at all happens to your design</em>. If it can, the rebuilt design replaces the open one, and from there undo and redo are ordinary again — <kbd>Ctrl</kbd>+<kbd>Y</kbd> walks forward through the rest of that session's steps and <kbd>Ctrl</kbd>+<kbd>Z</kbd> back.</p>
+<p>You'll be asked twice: once about any unsaved work (a rewind replaces the open design, the same as opening a file), and once about the rewind itself. That second question names the cost — any sessions recorded <em>after</em> the one you're going back into are discarded when you next save. That is the redo-tail rule applied to whole sessions: going back and carrying on makes a new branch the truth.</p>
+<p><strong>Two honest limits.</strong> Only the ten most recent sessions keep a copy of the design they started from, and a session recorded by an older version of SawDust — one that used a different file format — can be read but not rewound into. (The <em>first</em> session of a design is not a third limit: a design started with <span class="menu-path">File → New</span> keeps the empty document it began from, so it rewinds like any other.) Either way the session is still listed, still expandable and still readable; it's just greyed, and hovering it says which of the two it is. And a rewound design's joint-generated cuts may come back with different internal ids than they had: nothing anywhere refers to them, so nothing can tell, but it's worth knowing that a rewound file is not byte-for-byte the old one.</p>
+<p><strong>Remove and Keep are the current session's.</strong> An earlier session's rows offer <strong>Go to here</strong> and nothing else — their steps are on disk, not on the stack this session is building.</p>
+<p><strong>Crash recovery is a different mechanism.</strong> If SawDust is recovering unsaved changes at launch, the log that comes back is the file's — every session you saved. The edits between your last save and the crash are in the recovered design but not in the log, because the recovery snapshot holds the design, never the steps that made it.</p>
+<p>If the log file is ever damaged — hand-edited, half-written by a full disk — SawDust will not read it and will not write over it. It moves it aside as <code>&lt;your design&gt;.swdt.log.json.unreadable-…</code>, tells you it did, and starts a fresh log. The broken one is still on your disk.</p>
+
+<hr class="section-end">
+<h2 id="parts-properties">Parts &amp; properties</h2>
+
+<p>A <strong>part</strong> is one physical piece of stock — a board, a sheet good, anything that gets cut from a single piece of material. Add one from <span class="menu-path">File → Add Part…</span> or the Edit menu: pick a stock preset (or set your own length/width/thickness), choose a material, and it drops into the project.</p>
+
+<h3>Dimensions</h3>
+<p>Length, width, and thickness are all typed as fractional-inch text — "11 1/4", "3/4", or a plain decimal like "0.5" all parse the same way, to the nearest 1/32". (Prefer millimetres? See <a href="#units">Units</a>.) A dimension can also be an <strong>expression</strong> — arithmetic referencing a named project parameter — see <a href="#parameters-expressions">Parameters &amp; expressions</a>.</p>
+
+<h3>Quantity</h3>
+<p>A part's <strong>Quantity</strong> field means "this many identical pieces" — a shelf you set to 3 is three boards cut the same way, appearing once in the tree but three times in the cut list and hardwood shopping list. Distinct-but-similar boards (say, two shelves at slightly different widths) are two separate parts, not one part with a quantity.</p>
+
+<h3>Material, stock, and grain</h3>
+<p>Every part references one entry from the project's material palette (Materials tab) — its species, color, and cost basis. <strong>Stock</strong> is either <em>Solid</em> (dimensioned lumber — grain direction and board-length purchasing rules apply) or <em>Sheet</em> (plywood/MDF — rectangular sheet-goods packing applies instead). <strong>Grain matters</strong> controls whether the cut list and sheet layout are allowed to rotate the part 90° to save material — turn it off for anything where the visible grain direction doesn't matter (most plywood).</p>
+
+<h3>Duplicate, rename, delete</h3>
+<p><kbd>Ctrl+D</kbd> duplicates the selected part (placed a couple inches over from the original, ready to move into position); <kbd>F2</kbd> renames it; <kbd>Del</kbd> deletes whatever's selected — one part, several, or a permanent group. Every one of these is a full undo step, same as any other edit.</p>
+
+<hr class="section-end">
+<h2 id="parameters-expressions">Parameters &amp; expressions</h2>
+
+<p>A <strong>parameter</strong> is a named measurement that lives on the project — something like <code>CaseWidth = 36</code> or <code>ShelfCount = 3</code>. Manage them from the <strong>Params</strong> tab: add one, rename it, or remove it (removing is refused while any dimension, any part's <em>position</em>, any joint's own parameter, or any other parameter still refers to it by name, so you can't silently break a design). Hover a row to see what it's built on and what's built on it — a part's size, a part's placement, a joint, or another parameter.</p>
+
+<p><strong>Renaming is safe.</strong> Type a new name over a parameter's own and every expression written in terms of the old one is rewritten to match, in the same step you can take back with a single <kbd>Ctrl</kbd>+<kbd>Z</kbd> — a part's dimensions, a feature's, a joint's own parameter (a dado's depth, a dowel's diameter), and any other parameter derived from it. Nothing else about the expressions changes, and nothing about the model moves: it is the same design under a better name.</p>
+
+<p>Any dimension field anywhere in the app — a part's length, a feature's depth, a joint's offset, and (since v6) any of a part's three <em>position</em> coordinates — can be typed as an expression instead of a bare number: literals ("3/4", "11 1/4", "0.75"), the four arithmetic operators, parentheses, and parameter names. <code>CaseWidth / 2 - 3/4</code> is a legal expression, and if <code>CaseWidth</code> later changes, every dimension built from it updates automatically. A field holding an expression shows what it currently works out to just beneath it ("= 11 1/4"), so you never have to do the arithmetic yourself to check a number; a field holding a plain measurement shows nothing there, because the box already says it.</p>
+
+<p>Longer, meaningful names are cheap now: every expression box offers the matching parameter names as you type (see "Editing a field, anywhere"), so <code>HingeLeftSide</code> is as easy to use as a two-letter name and a good deal easier to read six months later. A name is still one word — letters, digits and underscores, no spaces — but the list finds it by its spelled-out form as well, so <code>hinge left</code> gets you there.</p>
+
+<p>A parameter's own value box takes an expression too, so one parameter can be <em>derived</em> from others: <code>ShelfSpacing = (CaseWidth - 2*PanelThickness) / (ShelfCount + 1)</code> is the shape most designs want. A derived row shows what it currently works out to beneath it ("= 11 1/2"), and changing anything upstream reflows the whole chain — parameters and parts alike — in one step you can undo in one step. The one thing you can't do is make a loop: a parameter can't refer to itself, and <code>A</code> referring to <code>B</code> while <code>B</code> refers to <code>A</code> is refused with the path named, so you can see which link to cut.</p>
+
+<p>An expression that fails to evaluate (an unknown name, a division by zero, a typo) is flagged right where it's used, and the last value that did evaluate is kept for the 3D model — so a mistyped expression never leaves the viewport blank or the app confused, it just tells you where to look.</p>
+
+<hr class="section-end">
+<h2 id="units">Units</h2>
+
+<p>SawDust can show and read measurements in <strong>fractional inches</strong> (the default, to the nearest 1/32") or in <strong>millimetres</strong> (to the nearest 0.1 mm). Switch with <span class="menu-path">View → Units</span>. The choice is yours and your machine's — it is saved with your other preferences, not in the design, so opening the same <code>.swdt</code> on another machine shows it in whatever unit that machine is set to.</p>
+
+<p><strong>The design itself is always in inches.</strong> Switching units changes nothing in the file, nothing in the 3D model, and no number any output is computed from — only how the digits read. Flip to millimetres, flip back, and every measurement reads exactly as it did before.</p>
+
+<h3>The three rules for typing a measurement</h3>
+<ul>
+  <li><strong>A fraction always means inches.</strong> <code>11 1/4</code> and <code>3/4</code> are inches whichever unit is showing — there is no such thing as three-quarters of a millimetre.</li>
+  <li><strong>A suffix always wins.</strong> <code>285mm</code> is millimetres and <code>11 1/4"</code> is inches, in either mode. You can write <code>285mm</code> in an inch-mode field any day of the week.</li>
+  <li><strong>A bare number means whatever the app is showing.</strong> Type <code>450</code> into a shelf width while millimetres are showing and you get 450 mm; type it while inches are showing and you get 450 inches.</li>
+</ul>
+
+<p>That third rule applies to a <em>whole field that is one number and nothing else</em>. <strong>Inside an expression, a bare number is always inches</strong> — that is the document's own unit, and an expression written in one mode has to mean the same thing in the other. So in millimetre mode, <code>18 - 6mm</code> is eighteen <em>inches</em> minus six millimetres; the "=" hint under the field shows what it works out to, so you can always check.</p>
+
+<p>When you type a bare number into a field while millimetres are showing, SawDust writes it into the design as <code>450mm</code> — the field shows that back to you afterwards. That is the only way the number can go on meaning 450 mm once you switch back to inches, and it is why the <code>mm</code> you see in a saved file is always something you typed. <strong>SawDust never rewrites a measurement you already entered</strong>: an inch-spelled dimension keeps its own text in millimetre mode and shows its millimetre reading as a hint beside it.</p>
+
+<h3>What doesn't follow the unit</h3>
+<ul>
+  <li><strong>Angles</strong> are degrees either way.</li>
+  <li><strong>Board feet</strong> stay board feet — a purchasing unit, not a length. So do sheet counts and money.</li>
+  <li><strong>Board lengths</strong> in <span class="menu-path">Tools → Options</span> are quoted in feet in inch mode and in millimetres in millimetre mode; the field's own label says which it wants.</li>
+</ul>
+
+<p>The move gizmo's <strong>snap grid</strong> does follow the unit, decided the moment you drag: a whole 1/16" in inch mode, a whole millimetre in millimetre mode. Switch units mid-session and the very next drag snaps the new way — nothing about the model changes, only where the next move lands.</p>
+
+<p><strong>Reset to Defaults</strong> in both <span class="menu-path">Tools → Stock Presets…</span> and <span class="menu-path">Tools → Options</span> is unit-aware too: run it in millimetre mode and you get a metric set — stock sizes named and sized in millimetres, board lengths, kerf and allowances in round metric figures — not an inch value with a different label on it. Switch back to inches and reset again to get the eleven imperial presets and the inch-based option defaults back. Either reset overwrites whatever you'd customized, so note your own values first if you want to keep them.</p>
+
+<hr class="section-end">
+<h2 id="placement-gizmo">Placement &amp; the gizmo</h2>
+
+<p>A part's <strong>placement</strong> is its position and rotation in the overall design. There are two ways to set it:</p>
+
+<h3>Numeric placement (Properties tab)</h3>
+<p>Type an exact X/Y/Z position, or step the rotation in fixed 90° increments about each world axis. This is the precise way to place something — useful for anything that needs to land at an exact coordinate rather than "about there."</p>
+
+<h3>Placements that follow parameters</h3>
+<p>An X/Y/Z box takes an <strong>expression</strong>, exactly as a length box does: type <code>CaseWidth - SideThickness</code> into a far side's X and it shows what that currently works out to just beneath ("= 35 1/4"), then <em>moves</em> the next time <code>CaseWidth</code> changes. That is what makes a design genuinely resizable — raise the case width and the far side travels while the shelf between the two grows, in one step, with the joinery still meeting. A position built from a plain number does none of that: it stays where it was put and the joint at the growing end goes stale. Place the near member of a pair at a number if you like; place the far one by expression. Rotation is always a plain angle — see <a href="#parameters-expressions">Parameters &amp; expressions</a> for the grammar, and note that a part's expression can name a <em>parameter</em> but never another part, so give a span a parameter of its own and have both sides refer to it.</p>
+
+<p>A coordinate that follows an expression is <strong>locked at the gizmo</strong>: that axis's arrow is drawn greyed, dragging it moves nothing, and the status bar says what the axis follows and where to change it. The other two axes of the same part still drag normally, and so does rotation. In a multi-selection only the locked members hold — drag two sides in X with one of them driven and the free one moves while the driven one stays where its expression puts it. To move a locked part, change the expression (or the parameter it names) in the Properties tab, or type a plain number over the expression to give the axis back.</p>
+
+<p><strong>A permanent group is the exception, and it has to be.</strong> When everything you're dragging sits inside the same outermost group — which is what clicking a generated drawer box, face frame, door, cabinet or inserted template in the 3D view selects — the arrows are not greyed and nothing holds back: the whole assembly travels as one body. Nested groups are included: a cabinet's carcass, face frame, doors and drawer boxes are four groups inside one, and dragging the cabinet moves all of it. Dragging just one of those sub-assemblies — the face frame on its own, say — moves that much of it, the same way. Its members' coordinates are written relative to the assembly's own origin, so moving the assembly moves that origin, and each expression simply gains the distance you dragged (<code>DoorWidth - DoorStileWidth</code> becomes <code>DoorWidth - DoorStileWidth + 3</code>). Everything the set was following, it goes on following — widen the door afterwards and the far stile still moves out. Alt+click a single board out of the group and it is locked again, because on its own its position is a statement about a measurement rather than a place.</p>
+
+<p>Duplicating a part whose position follows an expression keeps it following: the copy lands 2" clear of the original like any other duplicate, but its X reads <code>(CaseWidth - SideThickness) + 2</code> rather than a frozen number, so it travels with the original when the parameter changes. The <strong>Add Part</strong> dialog is numeric — a new part is placed at a number, and turning that into an expression is the next edit.</p>
+
+<p>Asking the Apprentice for this works too: "place the far side so it follows the case width minus the side thickness" is a request it can carry out, and asking it to nudge a locked axis by an inch gets you the expression named and the fix suggested rather than a silent move.</p>
+
+<h3>The move/rotate gizmo</h3>
+<p>Select a part (or a set of parts — see <a href="#selection">Selection</a>) and a set of colored handles appears at its anchor point. Drag an arrow to move along that axis, drag a ring to rotate about it. By default, moves snap to a grid (1/16" spacing, or 1 mm in millimetre mode — see <a href="#units">Units</a>) and faces snap to other faces they come close to; hold <kbd>Shift</kbd> while dragging to turn snapping off — free movement, and 1° rotation steps instead of 15°. <kbd>Esc</kbd> cancels a drag in progress with nothing committed; releasing the mouse commits it as one undo step. Moving or rotating a <em>set</em> of parts (a multi-selection or a group) keeps every part's own offset from the others intact — the whole set moves as a rigid body around a shared pivot at the center of the set's combined bounds.</p>
+
+<h3>Face orientation labels</h3>
+<p>Every part has its own local faces — Top, Bottom, Front, Back, Start, End — independent of which way it happens to be rotated in the design. When a part is selected, <span class="menu-path">View → Face Labels</span> (on by default) prints those six names directly onto the part's camera-facing faces, so you always know which face is which without having to remember how it was rotated. This matters most when a dialog is asking you to pick a face — the Add Feature dialog's face pickers light up the matching label on the model as you choose, so "Top" in the dialog and "Top" on the actual board are never in question.</p>
+
+<hr class="section-end">
+<h2 id="measure">Measure</h2>
+
+<p><span class="menu-path">Edit → Measure</span> (or the ruler button on the toolbar) arms the <strong>measure tool</strong>: click two points in the 3D view and it tells you how far apart they are. The pointer becomes a cross-hair while the tool is armed, and a left-click picks a point instead of selecting a part — everything else about the viewport keeps working, so you can orbit, pan and zoom between the two picks to line up the shot you want.</p>
+
+<p>The readout appears between the two points: the straight-line distance on the first line, and the three axis offsets — <strong>ΔX · ΔY · ΔZ</strong> — beneath it. The offsets are usually the ones you want: "how far in from the end is that shelf" is a ΔX question, not a diagonal. While you're picking the second point the readout follows the cursor and updates live, so you can watch the number as you go.</p>
+
+<h3>What it snaps to</h3>
+<ul>
+  <li><strong>Board corners — and cut-edge corners.</strong> Bring the cursor within about a dozen pixels of a corner and the pick takes that exact corner, so a corner-to-corner measurement across a case reads the real dimension rather than "about the real dimension." These include the corners of the board's own stock <em>and</em> the corners a box cut leaves — a dado's lip, a tenon's shoulder, a rabbet's step — so you can measure straight to the wall of a housing rather than eyeballing it against the face beside it. A hover marker shows which corner a click would take before you commit to it. Curved cuts, dovetails, box joints and edge profiles are not snap targets in this version — those keep the stock's own corners.</li>
+  <li><strong>Faces.</strong> Anywhere else on a board, the pick lands on the plane of the stock face you're nearest. That's what makes a face-to-face measurement — across a shelf gap, say — measure the boards' surfaces rather than whatever depth inside a cut the click happened to land on.</li>
+</ul>
+
+<p>A click on empty space, on the floor grid or on the scale figure does nothing: there is nothing to measure to out there.</p>
+
+<h3>Measuring again, and leaving</h3>
+<p>Once a measurement is on screen the next click starts a fresh one from that point, so you can walk around a project taking measurement after measurement without touching the menu. <kbd>Esc</kbd> leaves the tool (so does invoking <span class="menu-path">Edit → Measure</span> again) — a kept measurement (below) stays on screen even after you leave.</p>
+
+<h3>Keeping a measurement</h3>
+<p>Press <kbd>Enter</kbd> (or <span class="menu-path">Edit → Keep Measurement</span>) while a measurement is showing to keep it on screen — it draws in a quieter tint so it never competes with whatever you're measuring next, and the tool immediately arms for a fresh pick, so "measure, keep, measure again" is one smooth rhythm. A kept measurement is <strong>anchored</strong> to the two boards it named: drag one of them and the measurement follows, its number updating as it goes; delete either board and the measurement goes with it. Keep as many as you like — they accumulate rather than replacing each other.</p>
+
+<p><span class="menu-path">View → Clear Measurements</span> empties every kept measurement in one go, and takes whatever measurement is currently showing with it. Opening a different design does the same.</p>
+
+<p>A measurement not yet kept is never saved and never goes quietly out of date. It belongs to the view, not to the document — nothing about it is written into your <code>.swdt</code> file — and editing anything while one is on screen makes it disappear rather than leaving a number that stopped being true when a part moved. A <strong>kept</strong> measurement is also view state, never saved — but it survives an edit by anchoring itself to the parts it names, rather than by disappearing. The numbers read in whatever <span class="menu-path">View → Units</span> is set to, millimetres included (see <a href="#units">Units</a>).</p>
+
+<hr class="section-end">
+<h2 id="selection">Selection</h2>
+
+<p>Selection works the same way in the viewport and the project tree, and drives what the Properties/Joints tabs show and what the gizmo attaches to.</p>
+
+<ul>
+  <li><strong>Click</strong> a part — selects just that one, clearing anything else.</li>
+  <li><strong>Click empty space</strong> — clears the selection.</li>
+  <li><strong><kbd>Ctrl</kbd>+click</strong> a part — toggles it into or out of a multi-selection. A <kbd>Ctrl</kbd>+click that misses everything is a safe no-op; it never throws away what you had selected.</li>
+  <li><strong>Rubber-band selection</strong> — left-drag from empty space in the viewport to draw a box; every part <em>fully</em> enclosed by the box becomes the new selection (partially-overlapped parts don't count — the box has to fully surround a part to catch it). Hold <kbd>Ctrl</kbd> while dragging to add to the current selection instead of replacing it. A box that encloses nothing clears the selection, same as a plain click on empty space.</li>
+</ul>
+
+<h3>Groups vs. Alt+click</h3>
+<p>If a part belongs to a permanent group, clicking it in the viewport selects the <em>whole group</em>, not just that one board — grouping is meant to make a stack of parts behave like one assembly. Hold <kbd>Alt</kbd> while clicking to reach the individual part underneath instead, and <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+click to toggle just that one part into a multi-selection. The project tree is the exception: it always selects individual parts, group or no group, since a tree row is unambiguous about which part it is.</p>
+
+<hr class="section-end">
+<h2 id="groups-layers">Groups &amp; layers</h2>
+
+<p>Groups and layers solve two different problems and don't interact with each other — a part can belong to a group, a layer, both, or neither.</p>
+
+<h3>Permanent groups</h3>
+<p>A <strong>group</strong> is a saved selection-and-manipulation unit — a way of saying "these boards are one assembly" once, rather than reselecting the same set of parts every time you want to move or rotate them together. Create one from a selection (<span class="menu-path">Edit → Group Selection…</span>), and from then on a viewport click on any member selects the whole group (see <a href="#selection">Selection</a> for the Alt+click escape hatch). Groups can be renamed, disbanded (returns members to ungrouped, one level at a time), duplicated as a whole assembly, and can <strong>nest</strong> — a group can contain other groups. Group membership is saved with the document and travels with it; resizing a group as a unit isn't supported in this version — reach into it and resize the individual part instead. A group is also a step: <a href="#assembly-steps">Assembly steps</a> reads the same group tree to lay out the order you'd actually build the design in, so grouping a sub-assembly is how you write its own place in the instructions.</p>
+
+<h3>Layers</h3>
+<p>A <strong>layer</strong> controls what's visible in the 3D viewport, and nothing else — a part on a hidden layer still shows up in the cut list, the cost estimate, the sheet layout, the hardwood shopping list, and every shop drawing. Layers are useful for temporarily getting something out of your way visually — hide the case sides while you work out the back panel's joinery, say — without pretending it doesn't exist. This is the one important distinction to keep straight: <strong>layer membership</strong> (which layer a part is assigned to) is part of the saved document, while a layer's <strong>visibility</strong> (whether its eye is checked) is a per-computer view preference that is never saved into the document itself, never enters undo/redo, and is something the AI Apprentice can organize parts into but can never toggle on your behalf. Every part starts on the built-in Default layer, which always stays visible and can't be renamed, hidden, or removed.</p>
+
+<p>Besides the Layers tab's own combo and Move button, you can move a selection — including a whole group, since clicking any member selects all of it — straight from a <strong>Move to Layer</strong> submenu on the viewport's, the project tree's, and the Edit menu's right-click/context menus. A check mark shows the layer everything selected is already on; picking a different one moves the whole selection there in a single undoable step.</p>
+
+<hr class="section-end">
+<h2 id="features-joinery">Features &amp; joinery</h2>
+
+<p>A <strong>feature</strong> is a cut made into a part — everything from a groove to a mitred end. Add one from the Features area of the Properties tab; each type asks for the parameters that describe it in shop terms (which face, how deep, how wide, and so on):</p>
+
+<table>
+<tr><th>Feature</th><th>What it is</th></tr>
+<tr><td><strong>Dado</strong></td><td>A flat-bottomed slot cut across the grain. Runs the board's full width by default, or can be <strong>stopped</strong> short of the front and/or back edge, leaving a square shoulder rather than running off the edge — set a stop distance and the dado ends there instead.</td></tr>
+<tr><td><strong>Groove</strong></td><td>The same cut as a dado, but running with the grain instead of across it.</td></tr>
+<tr><td><strong>Rabbet</strong></td><td>An open-sided recess along one edge or end of a board. Like a dado, a rabbet can be stopped short of either end of its run instead of going all the way through.</td></tr>
+<tr><td><strong>Mortise</strong></td><td>A closed pocket cut into a face — the socket half of a mortise-and-tenon joint.</td></tr>
+<tr><td><strong>Hole</strong></td><td>A round hole, either through the part or to a set depth. A hole may be bored straight through material another cut has already taken away — a shelf-pin hole in a dado's floor, a screw hole in a hinge mortise, a wire pass-through in a rabbet — but not into a second hole, an eased edge, a dovetail socket, a curve, or the waste side of a miter or taper.</td></tr>
+<tr><td><strong>Miter cut</strong></td><td>An angled plane cut across one end of a board — the classic mitred corner.</td></tr>
+<tr><td><strong>Taper</strong></td><td>An angled plane cut that narrows a board along its length.</td></tr>
+<tr><td><strong>Edge profile</strong></td><td>A roundover, chamfer or cove along an edge — see <a href="#edge-profiles-wraps">Edge profiles &amp; wraps</a>.</td></tr>
+<tr><td><strong>Box joint fingers</strong></td><td>A row of square notches cut into one end of a board, through the full thickness and laid out along its width. The material left between them is the fingers. Normally you'd add these through a <strong>Box joint</strong> rather than by hand, which cuts both boards at once.</td></tr>
+<tr><td><strong>Dovetail tails</strong></td><td>The tail board's half of a dovetail: wedge-shaped sockets cut through the thickness at one end — narrow where they meet the end and wide at the baseline — leaving the tails standing between them, with a half-pin at each edge. Normally added through a <strong>Dovetail</strong> joint.</td></tr>
+<tr><td><strong>Dovetail pins</strong></td><td>The pin board's half: sockets driven in from the end, widest at the joint's outside face and narrowing inward, so the tails they receive can't pull back out. A <strong>lap</strong> above zero stops them short of that face, which is what makes a half-blind (drawer front) joint. Normally added through a <strong>Dovetail</strong> joint.</td></tr>
+<tr><td><strong>Curve cut</strong></td><td>A curved edge cut out of a rectangular board, with its own roundover, chamfer or cove on that edge — see <a href="#curved-parts">Curved parts</a> just below.</td></tr>
+<tr><td><strong>Dovetail socket</strong></td><td>A dado with a dovetail section, running the board's full width — narrow where it opens on the face and wider at its floor, so what slides into it can't lift out. The position you give is the socket's <em>centreline</em>, not one wall. Normally added through a <strong>Sliding dovetail</strong> joint.</td></tr>
+<tr><td><strong>Dovetail tongue</strong></td><td>The other half of the same section: two wedges taken off the board's two faces at one end, leaving a dovetail-shaped tongue standing between them — narrowest at the shoulder, widest at the tip. It's cut out of the board you already have, so the board's length doesn't change. Normally added through a <strong>Sliding dovetail</strong> joint.</td></tr>
+<tr><td><strong>Hole array</strong></td><td>A whole row of identical holes at a fixed spacing, added and edited as one thing — see <a href="#hole-patterns">Hole patterns</a> just below.</td></tr>
+<tr><td><strong>Hinge cup</strong></td><td>The 35 mm cup and two dowel bores a European cabinet hinge presses into — also below.</td></tr>
+</table>
+
+<h3 id="hole-patterns">Hole patterns: shelf-pin rows and hinge cups</h3>
+<p>Two of the commonest operations in a cabinet shop aren't one hole each — they're a <em>pattern</em>, and SawDust treats each as a single feature you set once and edit as a unit.</p>
+
+<p>A <strong>Hole array</strong> is a row of identical bores at a fixed <strong>pitch</strong>. You give the first hole's centre, which way the row runs (<strong>Along</strong> — u or v, the two directions of the face you're boring), the pitch, how many, the diameter, and whether it goes through or to a depth. Hole <em>k</em> sits at the first centre plus <em>k</em> pitches, so changing the count from 8 to 20 grows the row rather than making you add twelve more holes. A pitch no wider than the bit is refused, naming both numbers — bores that touch are a slot, not a row.</p>
+
+<p>The defaults are the <strong>32 mm system</strong>, the shelf-pin standard European cabinet hardware is built around: 5 mm holes at a 32 mm pitch, bored 37 mm in from the front edge. The classic line-boring layout is <strong>two arrays</strong>, one 37 mm from the front edge and one 37 mm from the back, and SawDust asks you to add two rather than folding both into one feature — one row is one row, and a pair is what you'd set the jig up for twice anyway.</p>
+
+<p>A <strong>Hinge cup</strong> is the 35 mm × 13 mm cup a European hinge presses into, with the two 8 mm dowel bores that go with it — 45 mm apart and 9.5 mm behind the cup centre, the standard "45/9.5" pattern. You place it by which <strong>edge</strong> of the door it hinges on, how far <strong>along</strong> that edge it sits, and its <strong>setback</strong> from it (21.5 mm by default, which is 35/2 plus a 4 mm tab). Setting the <strong>screw offset</strong> to <strong>0</strong> removes the two dowel bores and leaves the cup on its own. The mating <em>mounting plate</em> on the cabinet side is two 5 mm holes 32 mm apart, 37 mm in from the front edge — which is a two-hole hole array, not a feature of its own.</p>
+
+<p><strong>Every one of those numbers is millimetres, whichever unit you're showing.</strong> The hardware is specified in millimetres, so the defaults are written as <code>32mm</code>, <code>5mm</code>, <code>35mm</code> and so on — sources that mean the same thing in either display mode (see <a href="#units">Units</a>). Switch to metric and the hints beside them read <code>32 mm</code>; switch back to imperial and they read <code>1 17/64"</code>, while the boxes still say <code>32mm</code>. Nothing is rounded to a fraction behind your back.</p>
+
+<p>On the shop drawing a row is dimensioned the way a shop actually reads one: <strong>the first hole's centre, one pitch, and a <code>20 × ⌀5 mm</code> label</strong> — never twenty separate dimensions. A cup gets its position along the edge, its setback, and labels for the cup and the pair of bores.</p>
+
+<p><strong>Each hinge cup adds one hinge to the hardware list</strong> automatically (see <a href="#hardware">Hardware</a>), named for the door it's bored into — a 35 mm cup is bored for exactly one hinge, so the count is knowable. <strong>A hole array adds nothing</strong>, deliberately: a hole is not a pin, and how many shelf pins to buy depends on how many shelves you're putting in, which is your call and not the row's.</p>
+
+<h3 id="curved-parts">Curved parts</h3>
+<p>A <strong>Curve cut</strong> shapes one edge of a board — an arched top rail, a scalloped apron, a round or oval table top. The cut always goes through the full thickness, and the board it's cut from stays a plain rectangle: <strong>the cut list still shows the blank</strong>, because a rectangle is what you buy and what you saw the curve out of. Four shapes are on offer:</p>
+
+<table>
+<tr><th>Shape</th><th>What it is</th></tr>
+<tr><td><strong>Arch</strong></td><td>The curve touches the edge in the middle and falls away to each side, taking both corners off — the classic arched rail. The <strong>rise</strong> is how deep the corners are cut.</td></tr>
+<tr><td><strong>Scallop</strong></td><td>The same arc the other way up: the ends sit on the edge and the middle dips in by the <strong>rise</strong> — a scalloped apron under a table top.</td></tr>
+<tr><td><strong>Ellipse</strong></td><td>The largest ellipse that fits the board, touching all four sides — a circle if the board is square. All four corners come off. Edge, span and rise don't apply and the panel doesn't offer them; the board's own length and width <em>are</em> the ellipse's axes.</td></tr>
+<tr><td><strong>Points</strong></td><td>Anything else: you give the curve as a list of points and SawDust cuts the polyline through them.</td></tr>
+</table>
+
+<p>An arch or a scallop is placed by its <strong>edge</strong> (Front, Back, Start or End — the four edges of the board's face), its <strong>span</strong>, and its <strong>rise</strong>. The span is centred on the edge, and leaving it at <strong>0</strong> means the whole edge. Set a span shorter than the edge and you get a flat shoulder each side of the curve — a bonnet crest — which is drawn exactly as it will be cut. A span wider than the edge is refused rather than quietly trimmed, and so is a rise deeper than half the span (a semicircle is the limit) or one that would cut the board in two.</p>
+
+<p>For a <strong>Points</strong> curve, type the points as <code>along,inward</code> pairs separated by semicolons — for example <code>0,0; 7 1/2,3/4; 15,1; 22 1/2,3/4; 30,0</code>. <em>Along</em> is measured from the start of the span and <em>inward</em> from the edge, and each value is an ordinary expression, so a project parameter can drive a point. The first point must sit at 0 and the last at the span, and each must be further along than the one before it: a curve that doubles back on itself is refused, naming the point that turned around.</p>
+
+<p>On the shop drawing the curve appears in the Face view as the same series of short straight segments the part is actually cut to, dimensioned by its span and rise and labelled with its radius; the Edge and End views show the block of material the curve removes. The stock outline stays the blank's rectangle throughout, so what you see on paper is the board you cut from and the line you cut along.</p>
+
+<h4>Profiling a curved edge</h4>
+<p>The edge a curve leaves can be eased just like a straight one. A curve cut carries a <strong>top</strong> and a <strong>bottom</strong> profile of its own — a roundover, a chamfer or a cove, each with its own size — and the two are independent, so an ellipse table top can be rounded over on top and chamfered underneath in a single feature. Leave a picker on <strong>None</strong> and that face keeps a square edge, which is what a curve has until you ask for more.</p>
+
+<p>The profile <strong>follows the whole outline the curve leaves</strong>, not just the curved part: on a span shorter than the edge it runs along the straight shoulders and down the steps as well, in one continuous pass with mitred corners, exactly as you would run a bearing-guided bit around the shape. A size has to be less than half the board's thickness (or the two faces' profiles would meet in the middle), and it has to leave room on the board — the size, the shoulder and the step all have to be big enough for the bit to turn the corner, and SawDust says which one is short when they aren't. One shape it will not do: an <em>arch</em> on a partial span drops away from its own step, and a mitred profile cannot turn a corner that sharp — use the whole edge there, or describe the shape as a <strong>Points</strong> curve whose first segment leaves the step square.</p>
+
+<p>None of this changes what you buy: <strong>the cut list still shows the blank</strong>. On the shop drawing the Face view gains the profile's setback line just inside the curve, labelled with its size; the view looking along the board gains the tangent line; and the view looking at the end of the curve gains the little section arc, so the shape of the edge is on paper as well as on screen.</p>
+
+<h3>Stopped cuts</h3>
+<p>Stopping a dado, groove or rabbet is done with the same dialog you'd use for a through cut — the difference is filling in a <strong>Stop front / Stop back</strong> (or <strong>Stop start / Stop end</strong>, depending on which way the cut runs) distance instead of leaving it at zero. A dado runs across the board, so it stops short of the front and back edges; a groove runs along it, so it stops short of the two ends; a rabbet takes whichever pair its own edge runs along. A stop distance is measured from whichever edge it's named after, always ends in a square, chisel-cleaned shoulder (not a routed round end), and shows up as its own dimension on the shop drawing, measured from that same edge — so what you see on paper is exactly what the model describes.</p>
+
+<p><strong>Joints can stop too.</strong> A <strong>dado</strong> joint takes a <strong>Stop front / Stop back</strong> pair, a <strong>groove-and-panel</strong> joint a <strong>Stop start / Stop end</strong> pair, and a <strong>rabbet</strong> joint whichever pair its recess turns out to run along (its edge isn't known until the joint is made, so the Add Joint dialog doesn't ask — the Joints tab does, once the joint exists). All of them start at zero, which is the through cut they always made.</p>
+
+<p>There's one condition, and it's the honest one: <em>SawDust never notches the board sitting in the cut</em>. A shelf that runs edge to edge can't sit in a stopped dado without a notch cut through its own corner, and no cut in this tool's vocabulary opens a box on two faces and an end at once. So the board has to already be clear of the stop — a cleat set back from the edges, a door panel that reaches only its groove depth into each rail. Ask for a stop that would bite it and the joint is refused, telling you how far the board reaches, how far the stop pulls back, and both ways to fix it. Move a board <em>into</em> a stop later and the joint shows the ⚠ stale badge with that same sentence in its tooltip; nothing is re-cut behind your back.</p>
+
+<h3>When a combination can't be cut</h3>
+<p>SawDust checks every feature-adding or feature-editing action against the actual cutting geometry, not just against reasonable-looking numbers. If a combination of cuts genuinely can't be produced — say, two features that would carve the board down to nothing sensible — the edit is <strong>refused</strong>, with a message explaining what conflicts with what. This is a deliberate, standing rule throughout the app: an impossible cut always refuses and says why. It never silently produces a wrong shape, and it never crashes.</p>
+
+<hr class="section-end">
+<h2 id="joints">Joints</h2>
+
+<p>A <strong>joint</strong> records that two parts are connected, and — for most joint types — generates the matching features on both parts automatically, so they stay geometrically consistent with each other. Add one from the Joints tab or by picking two faces directly in the viewport (the viewport highlights faces as you hover so you can see exactly what you're about to join).</p>
+
+<p>Joint types: <strong>Butt</strong> (just records the relationship, no cuts), <strong>Dado</strong>, <strong>Rabbet</strong>, <strong>Groove-and-panel</strong>, <strong>Mortise-and-tenon</strong>, <strong>Dowel</strong>, <strong>Pocket screw</strong>, <strong>Box joint</strong>, <strong>Biscuit</strong>, <strong>Dovetail</strong>, <strong>Half-lap</strong>, and <strong>Sliding dovetail</strong>. Editing a joint's parameters regenerates both parts' features together as one step; deleting a joint removes the features it generated along with it.</p>
+
+<p>A <strong>dado</strong>, <strong>groove-and-panel</strong> or <strong>rabbet</strong> joint cuts a slot the other board <em>sits in</em>, so that board has to reach into the housing past the face it meets before you make the joint — a shelf into its dado, a panel into its groove, a back into its rabbet. Butt a shelf against a side and the cut would be an empty slot behind it, and the cut list a shelf too short to seat; instead the joint is refused with the move named (<em>"Shelf 1" butts against "Left Side" — a shelf sits in its dado, so it must reach the dado's depth into the side. Move it 1/4" into the side (or lengthen it by 1/4") and add the joint.</em>). So size the housed board for its cuts: a shelf between two ¾" sides with ¼" dados is the outside width less 1", starting ½" in — not less 1½", starting ¾" in. Place it that far in and the dialog pre-fills the depth from where the boards actually sit. A board reaching further than the cut is deep is refused naming both numbers; one a little short of the floor is fine — a door panel is deliberately left a hair short of its groove's floor, for play. A design saved before this rule opens as it always did, with each such joint showing the ⚠ stale badge and the move in its tooltip; <span class="menu-path">Edit → Regenerate All Stale Joints</span> can't fix a placement, so move or lengthen the boards, then regenerate.</p>
+
+<p>A <strong>mortise-and-tenon</strong> joint cuts its tenon <em>out of</em> the rail's own end, so the rail has to reach the tenon's length into the leg before you make the joint — butt the two together and the joint would eat that much of the visible rail. Move the rail that far in (or make it that much longer) and the dialog pre-fills the tenon length from where the boards actually sit; a butted pair is refused with the move named, and a tenon length that disagrees with the placement is refused naming both numbers. Because the rail's end is then buried inside the leg and can't be clicked, make this joint from the Joints tab's <strong>Add Joint…</strong> button rather than by picking faces.</p>
+
+<p>A <strong>biscuit</strong> joint puts matching slots on both sides of any seam two parts share — a panel glue-up's edge, a shelf into a side, a butt corner — sized for a compressed-beech biscuit (#0, #10, or #20, the trade's own sizes). The slot cut into each board is a rectangular pocket a little longer than the biscuit itself, so the joint can slide into alignment before the glue sets; it's shown as a plain rectangle even though the biscuit itself is arc-bottomed, since the rectangle fully contains the real cut. Size and count are pre-filled from the two boards' own thickness and the seam's length — the thinner board decides the size (a board under 1/2" is refused; use a dowel instead), and the seam's length decides how many, one roughly every 6". Either can be overridden by hand.</p>
+
+<p>A <strong>dovetail</strong> joint is the box joint's wedge-shaped cousin, and the two are placed the same way: the boards meet at a corner with their stock overlapping, each board's end reaching the other's outside face, rather than simply touching face to face. One board is the <strong>tail board</strong> and the other the <strong>pin board</strong>, and the choice is yours — in a drawer, the side carries the tails and the front the pins. The tail count is pre-filled at one tail per two inches of the boards' width; the slope (1:8 for hardwood, 1:6 for softwood) and the two pin widths are yours to set. A layout too tight to actually cut — too many tails, too steep a slope, or pins too wide — is refused with the numbers it worked out.</p>
+
+<p>The <strong>lap</strong> tells the two kinds of dovetail apart, and it's read off the placement rather than typed: place the two boards flush, the way you would for a box joint, and you get a <strong>through</strong> dovetail whose tails show on the front. Place the tail board's end a set distance <em>inside</em> the pin board's outside face — a quarter-inch, say, on a 3/4" drawer front — and you get a <strong>half-blind</strong> one, with the sockets stopping short of that face so nothing shows outside. The dialog pre-fills the lap from wherever you've actually put the boards, and a lap that disagrees with the placement is refused naming both numbers. One practical note: on a half-blind pair the tail board's end is buried inside the front and can't be clicked, so make that joint from the Joints tab's <strong>Add Joint…</strong> button (which asks for the two parts by name) rather than by picking faces in the viewport.</p>
+
+<p>A <strong>half-lap</strong> joint is different from every other joint type: instead of one board arriving through a face of the other, the two boards already <em>overlap</em> in space, lying flat in the same plane and crossing each other fully. Each is notched over the overlap to complementary depths so the two interlock flush — a <strong>corner</strong> when both overlaps sit at an end (like a picture frame), a <strong>T</strong> when one board's end meets the other's middle, or a <strong>cross</strong> when both overlaps are mid-length, all from the same joint with nothing to choose between them. Both boards must be the same thickness and lie in the same plane; <strong>Lap face</strong> names which of the first board's own faces the cut goes into (Top or Bottom), and the second board is always cut from whichever of its own faces sits opposite that one, so the two halves interlock rather than collide. Depth is pre-filled at half the shared thickness, and it is the <em>first</em> board's notch alone — the second board is always notched the remainder, so the two boards come out flush at every depth: a 1/4" lap on 3/4" stock cuts 1/4" from the first board and 1/2" from the second. Because the two boards' meeting faces are coplanar rather than a seam you can click, make this joint from the Joints tab's <strong>Add Joint…</strong> button (which asks for the two parts by name) — picking faces in the viewport never offers it.</p>
+
+<p>A <strong>sliding dovetail</strong> joint is a dado that locks: the shelf's end goes into the side exactly where a dado would, but the housing is cut with a dovetail section and the shelf's end to match, so the shelf slides in from one edge and can't be pulled straight out — the shelf-into-side joint that holds without fasteners. Like a mortise-and-tenon, the tongue is cut <em>out of</em> the shelf's own end, so the shelf has to reach into the side by the socket's depth before you make the joint: place it that far in (or make it that much longer) and the dialog pre-fills the depth from where the boards actually sit. Butt the shelf against the side and it's refused with the move named; a depth that disagrees with the placement is refused naming both numbers. The narrow width is pre-filled at the shelf's thickness less a quarter inch — an eighth of shoulder each side — and the slope defaults to 1:7, the router-bit convention. A tongue that would flare wider than the shelf is thick, or a socket as deep as the side is thick, is refused naming both numbers. Because the shelf's end is buried inside the side, the easiest path is the Joints tab's <strong>Add Joint…</strong> button, which asks for the two parts by name.</p>
+
+<p>Joints don't reflow automatically the instant a joined part is moved or resized — if that happens, the joint is flagged <strong>stale</strong> (a warning badge) until you deliberately tell it to catch up. Regenerating a stale joint re-derives its features from the parts' current dimensions and placement in one step. When several have drifted, <strong>Regenerate All Stale</strong> — on the Joints tab, and in the Edit menu — re-cuts every one of them that can be re-cut, as a single undoable step; any joint that can't be made as the parts now stand keeps its badge and tells you why.</p>
+
+<p>If you'd rather joints kept up on their own, tick <strong>Regenerate stale joints automatically</strong> in Tools → Options. With that on, an edit that would have left a joint stale re-cuts it as part of the same change — widen a case side and its dovetails follow — and one Ctrl+Z takes back the dimension and the joinery together. It's off by default, and it changes nothing else: a joint that can't be re-cut still shows its warning badge rather than blocking your edit, undo and redo replay exactly what was recorded, and opening a file never silently changes anything — a document you saved with badges still has them when you open it, and the next edit (or Regenerate All Stale) is what clears them.</p>
+
+<hr class="section-end">
+<h2 id="edge-profiles-wraps">Edge profiles &amp; wraps</h2>
+
+<p>An <strong>edge profile</strong> eases one edge of a board with a roundover, a chamfer or a cove — a quarter-round scooped <em>into</em> the edge rather than off it — to a size you set. Any of a part's eight edges can carry one: the four edges running the length of the board, plus the four running across its ends. (The edge a <a href="#curved-parts">curve cut</a> leaves is not one of these eight; the curve carries its own profiles.)</p>
+
+<h3>Wraps</h3>
+<p>To ease all four edges of a whole face at once — a tabletop's top edge all the way around in a roundover, a chamfer or a cove — choose the "wrap around" option in the edge picker instead of a single edge. That's a convenience for adding four ordinary edge profiles in one step, not a separate feature type, so a partial wrap (three sides, leaving one against a wall) is just as easy as a full one — add or remove individual edges freely afterward.</p>
+
+<p>Where two profiled edges meet at a corner, the corner is <strong>run-through</strong>: each cut runs its own edge the full length, and the two meet at a real, visible crease rather than a blended round-over corner — an honest description of what two straight router passes actually produce, not a smoothed illustration. Profiles meeting at a corner have to match in shape and size; a mismatched pair is refused, the same "refuses and says why" rule as any other unsupportable cut combination.</p>
+
+<hr class="section-end">
+<h2 id="generators">Generators</h2>
+
+<p>Four dialogs build a complete, ready-to-edit assembly in one step: <span class="menu-path">Edit → Insert Drawer Box…</span>, <span class="menu-path">Edit → Insert Face Frame…</span>, <span class="menu-path">Edit → Insert Door…</span>, and <span class="menu-path">Edit → Insert Cabinet…</span>. Each one inserts an ordinary group of parts and joints — a drawer's front/back/sides/bottom, a frame's stiles and rails, a door's stiles, rails and panel, a whole base cabinet — as a single undo step, and everything it makes is then just parts and joints: edit dimensions, features and joinery afterward exactly as you would anything you built by hand. A fifth, <span class="menu-path">Edit → Insert Template…</span>, does the same with a design <em>you</em> saved — see <a href="#templates">Templates</a> at the end of this section.</p>
+
+<p>The Apprentice can insert the same four assemblies from plain language — "add a face frame 24 by 30 with one intermediate rail, pocket screws," "insert a frame-and-panel door 15 by 24 with a roundover," "add a drawer box 16 wide, 4 tall, 20 deep," "insert a base cabinet 30 wide with three drawers and no door." Each is one tool call and one undo entry, and the group it creates is exactly what the matching dialog would have made for the same numbers.</p>
+
+<h3 id="whole-cabinet">A whole base cabinet</h3>
+<p><span class="menu-path">Edit → Insert Cabinet…</span> is the one that contains the others. It builds a <strong>face-frame base cabinet, drawers over doors</strong>: a case with two sides, a bottom dadoed into them, two top stretchers and a toe kick pocket-screwed to them, a back panel captured in grooves, and however many adjustable shelves you ask for, standing on <strong>32 mm shelf-pin rows</strong> bored into both sides. In front of that it builds a face frame with an opening per drawer and per door, a frame-and-panel door for each door opening, and a drawer box with a slab front for each drawer opening. One dialog, one undo step, and a preview line under the fields reading the cabinet back to you — <em>24 × 34 1/2 × 24 — 1 drawer over 2 doors, 1 shelf</em> — before you commit to it.</p>
+
+<p><strong>Width, height and depth are the outside box</strong>: floor to the top of the face frame, and the back of the case to the <em>front</em> of the frame. <strong>Overlay</strong> is how far each door and drawer front laps its opening on every side, so the doors and drawer fronts stand that much proud of the depth you typed — which is what an overlay is. An inset door (flush in its opening) isn't offered; nor are wall or tall cabinets, frameless cabinets, corner cabinets or a countertop.</p>
+
+<p>In the project tree it lands as <strong>one group holding the case, with a nested group per face frame, door and drawer</strong>. A viewport click selects the whole cabinet; <kbd>Alt</kbd>+click still reaches the single board, and the tree still selects individual parts (see <a href="#selection">Selection</a>).</p>
+
+<p><strong>It resizes whole.</strong> A cabinet named "Base Cabinet" gets nine parameters — <code>BaseCabinetWidth</code>, <code>BaseCabinetHeight</code>, <code>BaseCabinetDepth</code>, <code>BaseCabinetCaseThickness</code>, <code>BaseCabinetToeKickHeight</code>, <code>BaseCabinetStileWidth</code>, <code>BaseCabinetRailWidth</code>, <code>BaseCabinetDrawerFrontHeight</code> and <code>BaseCabinetOverlay</code> — and every sub-assembly's own parameters are arithmetic over them (the door's width really does read <code>(BaseCabinetWidth - 2*BaseCabinetStileWidth) + 2*BaseCabinetOverlay</code>). Edit <code>BaseCabinetWidth</code> on the Params tab and the sides, bottom, back, stretchers, toe kick, frame, doors, drawer fronts and drawer boxes all move together, with no joint left stale.</p>
+
+<p><strong>Two things are worked out when the cabinet is inserted and do not follow a parameter edit</strong>, and it's better to say so than to pretend: <em>how many holes a shelf-pin row has</em>, and <em>how high on the door each hinge cup sits</em>. A hole array's count is a whole number, not an expression, so making a cabinet much taller leaves its pin rows the length they were — the boards are right, the row is just short. Insert the cabinet again at the new size rather than stretching one that's a foot taller than it was built for.</p>
+
+<p><strong>The drawer fronts carry no joint, on purpose.</strong> In the shop a front is screwed to its box from the inside, through the box's own front, once the drawer is hung and the reveal is right. A pocket-screw joint here would put marker holes on the show face — exactly the surface you would never drill — so the front is simply a board sitting in front of the box. Move it, shim it, replace it with a different profile; nothing regenerates behind you.</p>
+
+<p><strong>Hardware.</strong> The cabinet writes two lines of its own — <strong>shelf pins</strong> at four per shelf, and one <strong>pull</strong> per door and drawer — and each drawer writes its own pair of slides. The <em>hinges</em> are not written at all: they are derived from the hinge cups bored into the doors, so they are already in the Hardware window without anyone counting them (see <a href="#hardware">Hardware</a>). All of it is a note you can edit or delete.</p>
+
+<p><strong>Why it refuses.</strong> A cabinet too narrow for the doors you asked for, too short for its toe kick and drawers, or too shallow for a drawer box is refused before anything is built, in the cabinet's own words and with a minimum size to aim at. Nothing is written, so there is nothing to undo.</p>
+
+<h3>Filling an opening</h3>
+<p><span class="menu-path">Edit → Insert Drawer Box from Opening…</span> is the same dialog, pre-filled instead of typed: pick the four faces bounding an opening in the viewport (the Add Joint pick-first shape) and the width, height and depth come from what you picked, with the usual clearance built in. Every field it fills in is still freely editable before you accept it. There's no equivalent viewport pick for the Apprentice — it has no way to click a face — so ask it to read the opening's size first (it can look at the surrounding parts) and it will pass the numbers on its own.</p>
+
+<h3>Resizing a generated set</h3>
+<p>Every generator's own size fields land as project parameters sharing one name prefix — a drawer named "Top Drawer" gets <code>TopDrawerWidth</code>, <code>TopDrawerHeight</code> and <code>TopDrawerDepth</code> on the Params tab. Resize the whole assembly later by editing that parameter, not by resizing its parts one at a time. <strong>A generated set resizes whole.</strong> Its far members aren't parked at a fixed number — they're placed by an expression over those same parameters, which you can read in the Properties panel's X/Y/Z fields: a drawer's back sits at <code>DrawerDepth</code>, its right side at <code>DrawerWidth - 0.5</code>, a door's far stile at <code>DoorWidth - DoorStileWidth</code>, a face frame's single intermediate rail at <code>(FaceFrameHeight - FaceFrameRailWidth)/2</code>. Widen the set and everything moves out together with nothing left behind and no joint stale.</p>
+
+<p>One thing does still go stale, and honestly: making a frame or a door <em>taller</em> moves its top rail up, and the mortise (or dowel holes, or screw markers) cut into the stile for that rail have to move up with it. Those are stored on the stile as plain measurements from its own end, so the joint shows the usual warning badge — Regenerate it (or turn on auto-regenerate under Tools → Options) the same as you would anywhere else. Nothing is wrong with the boards; the joinery just needs re-cutting where the parts now meet.</p>
+
+<h3>The frame-and-panel door's groove</h3>
+<p>A door's stiles are grooved to capture the panel, and those grooves now <strong>stop</strong> — one rail's width less the groove's depth in from each end of the stile, which puts the stop plane inside the rail that covers it, so nothing shows at the door's top and bottom ends. The stop is written as an expression over the door's own rail-width parameter, so widening the rails moves it along with them. The rails' own grooves still run through, deliberately: a rail's ends are buried in the stile's mortise or butted against its edge, hidden by construction either way. The same is true of a drawer box's bottom groove and a cabinet's back groove — both run out where nothing shows, which is ordinary shop practice.</p>
+
+<h3 id="templates">Templates — your own generators</h3>
+<p>The four dialogs above are built in. A <strong>template</strong> is the same idea, made out of your own work: save any design — or any one group of it — and insert it into another project, sized to fit, as many times as you like.</p>
+
+<p><strong>Saving.</strong> <span class="menu-path">File → Save as Template…</span> saves the whole design. Right-click a group in the tree or the viewport and choose <strong>Save Group as Template…</strong> to save just that group: its parts, the joints wholly inside it, the parameters those parts and joints are built on (and the parameters <em>those</em> are built on), the materials they're cut from, and any hardware lines linked to them. Nothing else comes along — a parameter another part uses, a joint reaching outside the group, a material nothing in it is cut from: all left behind. Give it a name and a description, and pick which three of its parameters are its <strong>width</strong>, <strong>height</strong> and <strong>depth</strong> — the three sizes the Insert dialog will offer. SawDust pre-selects them if the names read that way (<code>BaseCabinetWidth</code> finds "width"), and "(none)" is a perfectly good answer: a template built from literal measurements is legal, it just can't be resized on the way in.</p>
+
+<p><strong>Inserting.</strong> <span class="menu-path">Edit → Insert Template…</span> lists what you've saved with its part count and description. Name the copy, set any of the three sizes — <em>leave one blank to keep the size the template was saved at</em> — and it lands as one group of ordinary parts and joints, one undo step, exactly like the built-in generators. A size can be an expression over <em>this</em> project's own parameters (<code>Run / 2</code>), which is the point of keeping it typed rather than numeric: the copy then follows that parameter for the life of the design.</p>
+
+<p><strong>Every copy is independent.</strong> Its parameters get a prefix from the name you gave — insert "Base Cabinet" as <em>Sink Base</em> and its width parameter is <code>SinkBaseBaseCabinetWidth</code> — so a second insertion never collides with the first, and editing either copy never touches the template or the other copy. Its joints are cut fresh against the boards as inserted, and its materials are matched to this project's palette <strong>by name</strong>: a template cut from "Maple" uses your Maple if you have one and brings its own if you don't (once, however many parts share it).</p>
+
+<p><strong>From an opening.</strong> <span class="menu-path">Edit → Insert Template from Opening…</span> picks four faces in the viewport, the same way the drawer's does, and fills the three size fields with what you picked — <em>exactly</em>, with no clearance subtracted. A template is not a drawer: it might be a face frame that fills its hole edge to edge, or a drawer box that already has the play built in. If you want air around it, subtract it yourself in the fields, or save the template with it.</p>
+
+<p><strong>Where they live.</strong> <code>%LOCALAPPDATA%\SawDust\templates\</code>, one folder per template, each holding an ordinary <code>.swdt</code> design and a small readable <code>template.json</code> beside it. Copy a folder to another machine and that machine has the template; delete a folder and it's gone. A template saved by a <em>later</em> version of SawDust is listed but not insertable, and says so rather than failing quietly.</p>
+
+<p><strong>Two are there from the start.</strong> The first time SawDust runs, it copies <strong>Floating Shelf</strong> and <strong>Bookcase</strong> — two of the Welcome window's own samples — into your template folder, sized by their own width/height/depth parameters, so <span class="menu-path">Edit → Insert Template…</span> is never empty before you've saved one yourself. They're seeded once, never again: delete one, or edit it, and it stays that way through every later launch.</p>
+
+<p>The Apprentice can do all of the inserting: ask it to list the templates and it reads back each one's name, part count and sizing parameters; ask it to insert one at a size and it does, as one tool call and one undo entry. Saving a template is yours — it's a folder on your machine, not a document edit.</p>
+
+<hr class="section-end">
+<h2 id="shop-outputs">Shop outputs</h2>
+
+<p>This is where SawDust earns its keep over a general 3D tool — everything below is generated straight from the parametric design, always current, never something you maintain by hand.</p>
+
+<p>Every paper output below can also export a PDF — a 300 DPI raster snapshot, one image per page, so what prints is exactly what's on screen. It's what a lumberyard counter or an email attachment can actually open; XPS export stays too, for whichever a given printer or workflow prefers.</p>
+
+<h3>Excluding a part from the shop outputs</h3>
+<p>Tick <strong>Exclude from shop outputs</strong> in the Properties panel (or use <span class="menu-path">Edit → Exclude from Shop Outputs</span> for a whole selection, or the same row under <span class="menu-path">Edit → Groups</span> for a group) to leave a part out of the cut list, the cost estimate, the sheet layout, the hardwood purchase report, and every Shop Drawings sheet — the assembly sheet included. The part stays in the design and in the 3D view exactly as before; excluding it is not the same thing as hiding it on a layer, which affects only the viewport and none of these reports. Nothing is silently dropped: the cut list panel's summary strip counts how many parts are currently excluded, and the project tree marks each one with a muted "· not in outputs" note.</p>
+
+<h3>Cut list</h3>
+<p>A live table (a tab of the bottom dock, or <span class="menu-path">File → Export</span> to CSV or Excel) of every board and sheet the design needs — grouped by identical material, thickness, and size, with quantities collapsed together, finished dimensions, and a configurable rough-cut allowance for solid stock.</p>
+
+<h3>Cost estimate</h3>
+<p>The cut list priced against each material's cost basis (per board foot for solid stock, per sheet for sheet goods), with a configurable waste factor added on top (defaults: 15% for solid stock, 10% for sheet goods) — set both under <span class="menu-path">Tools → Options</span>. Solid stock is priced at the <strong>quarter thickness</strong> it would actually be bought at — the same figure Hardwood Purchase groups by, finished thickness plus a planing allowance — rather than at the cut list's own rough-thickness column, so the dollars here and the boards on the shopping list agree on what is being bought; hover the Cost column's header for the same explanation in the panel.</p>
+
+<h3>Sheet layout</h3>
+<p><span class="menu-path">View → Sheet Layout…</span> packs every sheet-goods part onto full sheets, respecting grain direction where it matters, with a kerf allowance between pieces (default 1/8"). It's a good, practical packing — not a claim of the mathematically optimal cut. Print, or export to XPS or PDF, from the same window. <span class="menu-path">Export DXF…</span> writes every sheet's stock rectangle, piece rectangles and labels as one file, full size (in millimetres when the display unit is metric) — the format a CNC router or nesting program reads directly; the kerf itself isn't drawn, since a nest is the cut list of rectangles, not the saw's path. Usable leftovers export on their own <code>OFFCUT</code> layer, and a sheet opened from the inventory exports at its own size, titled for it.</p>
+<p><strong>Every piece says what it is.</strong> A piece with room for it carries its part name and finished size, <em>turned to run along its own long side</em> — so a tall narrow strip reads bottom-to-top rather than going blank. A piece too small for that carries a single letter instead, and the <strong>legend under the diagram</strong> spells that letter out: part name, size, and how many of them are on this sheet. Anything too small even for a letter is in the legend as well. The letters belong to the <em>material</em>, not the sheet — a part cut from two sheets of the same plywood wears the same letter on both, so a page's legend may show C, F and K rather than A, B and C. Hover any piece, labelled or not, for the same information as a tooltip. The legend prints and exports with the diagram.</p>
+<p><strong>Leftovers are reported, never stored.</strong> Any free rectangle a sheet leaves behind that's at least 6" (150 mm) on both sides — the same guillotine leftovers the packer already computes, never re-derived — is hatched lightly on the diagram and captioned with its size when the caption fits; the window's summary line names how many are usable and the largest one's size. Nothing is kept anywhere until you say so: <strong>Add Leftovers to Inventory…</strong> files the current sheet's usable offcuts under its own material's name, with a confirmation naming how many were added.</p>
+<p>The shop's own <strong>offcut inventory</strong> — remnant sheets already on hand — lives under <span class="menu-path">Tools → Options → Offcuts</span>: an editable list of material name, size and how many, matched to a document material by name (case-insensitive, exact — a typo simply never matches, so type it the way the project's own material reads). When a layout packs, a matching offcut is opened <em>before</em> a full sheet — largest first — and the sheets-to-buy count leaves it out, so "sheets to buy" stays honest with the drawer in play; the Cut List panel's sheet line names how many came from offcuts beside the packed count, so the two numbers read together. An offcut too small for anything in the design is simply never opened. Nothing ever removes an offcut from the inventory automatically — the design isn't cut yet — so take a used one off the list yourself, in Options, once the real board is gone.</p>
+
+<h3 id="part-labels">Part labels</h3>
+<p><span class="menu-path">View → Part Labels…</span> prints one card per physical piece — a Qty-3 shelf is three cards, "1 of 3" through "3 of 3" — ten to a page on a standard Avery 5163 sheet (2 columns of 4" × 2" labels, 5 rows), so a shop with that stock prints straight onto it and everyone else gets ten neat cards to cut apart. Each card carries the part's name, which copy it is and the project's name, its finished length × width × thickness in the display unit, its material, and — for a part whose grain direction matters — an arrow along the card's own long axis. Print, or export to XPS or PDF, from the same window; all three produce the same pages the on-screen preview shows.</p>
+<p>Every part not excluded from shop outputs gets a card for each of its pieces (see <a href="#shop-outputs">Excluding a part from the shop outputs</a> above) — exclude a part and its labels vanish with everything else it's excluded from.</p>
+
+<h3>Hardwood purchase</h3>
+<p><span class="menu-path">View → Hardwood Purchase…</span> is the same idea as sheet layout, but for solid stock bought by the board. Parts are grouped by species and by <strong>quarter thickness</strong> — the standard lumberyard sizes, 4/4 through 16/4, in quarter-inch steps — picking the smallest standard size that covers the part's finished thickness plus a planing allowance (default ¼", enough to surface both faces flat). Within each group, pieces are packed end-to-end into boards bought at one of a configurable set of standard lengths (default 6, 8, 10, and 12 feet), with a kerf allowance between neighbors on the same board, and each board is sized down afterward to the shortest standard length that still holds everything on it.</p>
+<p>Every packed piece carries a large letter — a part's quantity copies share one key, restarting at A for each group — with the full name and rough size on hover, and a legend underneath each group's boards spells out what every letter means. A piece too short to draw its own letter still has its tooltip and its legend row. The window zooms the same way Shop Drawings does — see that section's paragraph above for the gestures. It also prints, and exports to XPS or PDF, the same way — paginated onto Letter pages with a "Sheet k of N" header once the list runs past one page.</p>
+<p>Board <em>width</em> is deliberately honest about random-width lumber: a board's width is simply "at least as wide as its widest piece," never assumed to be some fixed rack width — and that packed width is always the piece's <em>rough</em> width, the same measure the board is actually cut from. A piece whose <strong>finished</strong> width exceeds the shop's configured maximum board width (default 12", the widest finished board you can buy without a glue-up) is flagged as a <strong>glue-up</strong> instead of being packed onto a single board, and a piece longer than the longest configured board length is reported as <strong>unpurchasable</strong>, with a reason — nothing is ever silently dropped from the list. All of these figures (lengths offered, kerf, maximum board width, planing allowance) are configurable under <span class="menu-path">Tools → Options</span>.</p>
+
+<h3>Shop drawings</h3>
+<p><span class="menu-path">View → Shop Drawings…</span> generates orthographic, dimensioned drawings straight from the parametric data — an assembly sheet plus one sheet per part, with front/top/side views and dimension lines that never overlap. Stopped dados and rabbets carry their own stop distance as a dimension, measured from the same edge the stop itself is defined from, so a shop drawing shows exactly where a stopped cut starts and ends, not just that it stops. Use <kbd>Ctrl+wheel</kbd> to zoom centered on the cursor, or <kbd>Ctrl+0</kbd> to fit the page; choose Letter or Legal paper and override orientation per page under the drawing's own page setup. A view too wide or tall for one page continues onto a numbered "Sheet 2 of N" rather than silently clipping. Print, or export to XPS or PDF, from the same window. <span class="menu-path">Export DXF…</span> asks This sheet or All sheets, and whether to include dimensions and labels, then writes plain lines and text on named layers (outlines, visible and hidden feature edges, centerlines, dimensions, text) — every view at full size, 1:1, for a CAM program, laser cutter or CNC router to read directly; turn the dimension and text layers off in the viewer for clean outlines alone.</p>
+
+<h3 id="assembly-steps">Assembly steps</h3>
+<p>The <strong>group tree is the instruction outline</strong>: every permanent group in the project (see <a href="#groups-layers">Permanent groups</a>) becomes one build step, a group's own nested sub-assemblies always built before the group that uses them — a cabinet's drawers, doors and face frame each get their own step before the cabinet itself. Loose parts that are joined to something but sit in no group of their own are swept into one closing step named after the project; a design with no groups at all gets a single step listing every joint in it. Nothing is ever silently left out — a part that is in no group and joined to nothing shows up in a note at the end instead.</p>
+<p>Turn steps on and off with the <strong>Assembly steps</strong> checkbox in the Shop Drawings window, right beside Exploded — checked by default. Each step page shows an exploded view of <em>only that step's own parts</em>, separated about their own center rather than the whole design's, with three lists underneath: the parts it uses (including "Sub-assembly: Drawer 1 (step 2)" for a step built from an earlier one), the joints it makes, and the hardware it takes. Step pages print, zoom, and export to XPS, PDF and DXF exactly like every other Shop Drawings sheet, and each has its own page-orientation override under the drawing's page setup. If you want a different order, regroup — the steps follow the group tree, not something you write separately.</p>
+
+<h3>Design notes</h3>
+<p><span class="menu-path">View → Design Notes…</span> opens a small, non-modal window for free-form text saved with the design — cutting sequences, glue-up reminders, anything that isn't a measurement. It commits automatically as you work with the rest of the app (there's no Save button), the same undo-friendly "Edit Design Notes" step as any other edit. Whenever the notes aren't empty, they print as their own "Notes" page in Shop Drawings, right after the assembly sheet and before the first part sheet — paginated across as many sheets as the text needs, honoring the same paper size and per-page orientation as the rest of the set.</p>
+
+<hr class="section-end">
+<h2 id="hardware">Hardware</h2>
+
+<p><span class="menu-path">View → Hardware…</span> opens the design's hardware list — everything the project needs that is <em>bought</em> rather than cut: hinges, drawer slides, shelf pins, screws, knobs, glue, finish. It is saved with the design like anything else, so a project carries its own shopping list.</p>
+
+<p>Each line has a <strong>name</strong>, a free-text <strong>category</strong> ("Hinges", "Fasteners", "Finish" — whatever you would write on a list), a free-text <strong>size</strong>, and a <strong>quantity</strong>. Use <strong>Add…</strong>, <strong>Edit…</strong> (or double-click a row) and <strong>Remove</strong>; every one of those is an ordinary undoable edit, so <kbd>Ctrl+Z</kbd> in the main window takes it back.</p>
+
+<p><strong>Size is free text on purpose.</strong> Write it however it reads on the box — "35 mm", "#20", "M4 × 16", "1 1/4"". Unlike a part's dimensions, it is never parsed, converted or calculated with, so nothing here has to be expressed in inches.</p>
+
+<h3>What "For" means</h3>
+<p>An item can name the part or the joint it is for, and that name shows in the <strong>For</strong> column. It is a <em>note about why the item is on the list</em> and nothing more — no hole is drilled for it, no fastener is drawn, and nothing about the design depends on it. Delete the door those hinges were for and the hinges stay on the list; the link simply empties (and comes back if you undo the deletion). Most items are for nothing in particular, and leaving the picker on "(none)" is the ordinary case.</p>
+
+<h3>Screws, dowels and biscuits your joints already imply</h3>
+<p>A pocket-screw, dowel or biscuit joint already says how many fasteners it needs — its own <strong>Count</strong> field. The Hardware window reads that count and shows it as a <em>derived</em> row beneath your own items, shown in italic and named by the joint it came from ("derived from Dado joint …"), so you never have to count screws by hand or keep a shopping-list line in sync with a joint you're still adjusting. A derived row has no Edit or Remove of its own — change the joint's Count instead, and the row follows the moment the edit settles. If you also add an explicit item for the same thing, the two rows stay separate rather than being added together; that's deliberate; two lines that happen to agree isn't the same as one line being right.</p>
+<p>Excluding a part from shop outputs (see <a href="#shop-outputs">Shop outputs</a>) also excludes any joint built on it from this list — the row for that joint disappears, and a note beneath the grid names which joint was left out, the same "nothing silently dropped" rule the cut list follows.</p>
+
+<h3>A hinge for every hinge cup</h3>
+<p>Bore a <strong>hinge cup</strong> into a door (see <a href="#hole-patterns">Hole patterns</a>) and one <em>derived</em> row appears here — <strong>Euro hinge, 35 mm cup</strong>, quantity 1, with "For" naming the door it's bored into. A 35 mm cup takes exactly one hinge, so the count follows the cups without your keeping a line in sync; two cups on a door are two rows, and removing a cup removes its row. Excluding the door from shop outputs removes them both and names the door beneath the grid, the same "nothing silently dropped" rule as above.</p>
+<p><strong>Hole arrays add nothing here</strong>, on purpose. A shelf-pin row is a row of holes, not a bag of pins — how many pins to buy depends on how many shelves you're actually putting in, which the design doesn't know. Add them as an ordinary item ("8 shelf pins, 5 mm") when you know the number. The one thing that <em>does</em> know the number is the cabinet generator, which counts four pins per shelf and writes them as an ordinary line — see below.</p>
+
+<h3>Slides a generated drawer box adds for you</h3>
+<p>Insert a drawer box (see <a href="#generators">Generators</a>) and it writes one hardware line of its own: <strong>a pair of drawer slides</strong>, in the longest standard length its depth will take — 10, 12, 14, 16, 18, 20, 22 or 24 inches — with "For" naming the drawer's left side. A box shallower than 10" gets no line at all, since there's no standard slide that short. Quantity is 1, because slides are bought as a pair.</p>
+<p>Unlike the screws and dowels above, this is an <em>ordinary</em> item, not a derived row: it's written into the design as though you had typed it, so you can edit its size, change its quantity, or Remove it outright if you're building the drawer on wooden runners instead.</p>
+
+<h3>Pins and pulls a generated cabinet adds for you</h3>
+<p>Insert a cabinet (see <a href="#whole-cabinet">A whole base cabinet</a>) and it writes two ordinary lines of its own, plus a pair of slides for each of its drawers: <strong>shelf pins</strong> at <em>four per shelf</em>, 5 mm, with "For" naming the cabinet's left side, and one <strong>pull</strong> for every door and drawer. Both are notes like any other — change the pull's size once you've chosen one, or Remove the pins if the shelves are fixed after all.</p>
+<p>Its <strong>hinges</strong> are not written, and that's not an omission: every door gets two hinge cups, and each cup already derives its own hinge row above. Counting them here as well would put every hinge on the list twice.</p>
+
+<h3>Hardware never becomes geometry</h3>
+<p>Hardware is a list, and only a list. Nothing on it is placed, drawn in the 3D view, cut into a part, or shown on a shop drawing, and it never appears in the cut list, the sheet layout or the cost estimate. If you want a hole for a shelf pin, that is a <strong>hole</strong> feature on the part — a separate, deliberate act.</p>
+
+<h3>Exporting the list</h3>
+<p><span class="menu-path">File → Export → Hardware List (CSV)…</span> and <span class="menu-path">File → Export → Hardware List (Excel)…</span> write the same five columns — Name, Category, Size, Qty, For — as a spreadsheet to take shopping, explicit items first and any derived rows after them. The workbook keeps the quantity as a real number you can total, and both formats keep a size like "1/4" reading as "1/4" rather than as a date.</p>
+
+<p>The Apprentice can keep the list for you too — ask it for "8 shelf pins, 5 mm" and it lands as one undo step.</p>
+
+<hr class="section-end">
+<h2 id="design-checks">Design checks</h2>
+
+<p><span class="menu-path">View → Design Check…</span> opens a window that looks the whole design over and says what an experienced hand would mention while leaning over your drawing: where the wood is going to move, and how far a shelf is going to sag. Click a row and it selects the boards it is talking about, so you can go straight to the part in question.</p>
+
+<p><strong>Everything here is advice, and only advice.</strong> No check ever blocks an edit, refuses a command, or changes a single thing about your design — there is nothing to dismiss and nothing to acknowledge. A finding is a sentence and a number; what to do about it is yours. Nothing about the checks is saved with the file either: they are worked out fresh from the design every time it changes, so there is no stale warning to clear and nothing in the <code>.swdt</code> that has to be kept in step.</p>
+
+<p>Parts a check has something to say about are marked in the project tree with a <strong>↔</strong> in wood brown, and hovering it shows the sentence. That mark is deliberately <em>not</em> the ⚠ badge, which keeps its own single meaning: ⚠ says the geometry is wrong and the part cannot be cut as drawn, while ↔ says the lumber is going to behave like lumber.</p>
+
+<h3>Wood movement</h3>
+<p>A board grows and shrinks <em>across</em> its grain with the seasons — a heated house in winter and a humid shop in August can be several percent of moisture content apart — and hardly at all along it. So a wide solid panel is only in trouble when something holds it rigidly across the direction it wants to grow, and that something's own grain runs that way: a solid top screwed hard to an end apron, a breadboard end glued its whole length, a wide solid back let into the case sides. The window names the panel, names what is holding it, and gives the movement to expect.</p>
+<p>What that figure assumes: <strong>flat-sawn stock</strong> and a <strong>4% seasonal swing in moisture content</strong>, both deliberately on the pessimistic side — quarter-sawn stock of the same species moves roughly half as much, so the check never under-states. Above 1/16" of expected movement it is a warning; below it, a note.</p>
+<p>A panel sitting in <strong>grooves</strong> gets a note rather than a warning, saying the thing that matters about it: <em>let it float</em>. A frame-and-panel door works precisely because the panel is loose in its grooves and unglued, free to breathe. Glue it and you have built the failure the joint exists to avoid.</p>
+<p>Some things are correctly silent. A dadoed shelf in a case side does not flag, because the shelf's width and the side's width run the same way and the two move in sympathy — that is the check working, not missing something. Nor does a box-jointed or dovetailed corner, where both boards' grain runs along the seam by construction. Sheet goods never move at all, and a part whose <strong>Grain matters</strong> box you have cleared is left alone, because that box is you saying not to reason about its grain.</p>
+
+<h3>Shelf sag</h3>
+<p>A board that joints hold at <strong>both</strong> ends of a span gets a deflection estimate over its <strong>clear span</strong> — the gap between its supports, not the length of the board. Add a third upright in the middle and the check sees two shorter spans instead of one long one, which is exactly what it does in the shop. A board held at one end only, or at neither, is not a shelf and gets no row: a cantilever and a table apron are different problems.</p>
+<p>The estimate is the standard one: a <strong>uniformly distributed load</strong> on a <strong>simply supported</strong> rectangular board, worked from the species' stiffness and the board's own depth and thickness. Point loads, cantilevers, fixed ends, torsion boxes and stiffening edge-banding are all outside what it models — a real shelf's ends are somewhat fixed by their joinery, which makes the simply-supported reading the conservative one.</p>
+<p>The verdict is <strong>per foot of span</strong> rather than per shelf, which is how the trade judges it: a shelf twice as long sagging twice as far is not twice as bad. Past about 1/50" per foot it is a warning; under that it is still reported as a note, because a shelf's number is worth reading even when it is fine.</p>
+<p><strong>A board is only a support once a joint says so.</strong> Two boards that merely touch are not joined, and the span is measured straight past anything nothing is jointed to — so dropping a foot under a shelf changes nothing until you add the joint. When that happens the window says so, naming the board it walked past, because a figure that refuses to move is otherwise very hard to explain. Add the joint (any kind — a butt joint is enough) and the span splits.</p>
+
+<p><strong>The levers, in order of effect:</strong> span, then thickness, then depth, then species. Span counts four times over and thickness three, so shortening a span — or dropping in a mid-span divider — beats going thicker, and going thicker beats changing species. A 3/4" plywood shelf over 36" is the classic case that just barely does not work.</p>
+
+<h3>The shelf load</h3>
+<p>The window carries one editable field, <strong>Shelf load</strong>, in pounds per foot of span (or kilograms per metre in metric mode — see <a href="#units">Units</a>). It starts at 20, which is roughly what a foot of books weighs. Type a new number and press <kbd>Enter</kbd>, or click away, and every sag figure re-computes on the spot: try 40 to ask what happens if the shelf ends up holding records or paint cans.</p>
+<p>It is a what-if knob and nothing more. It is <strong>not saved</strong> — not in the design, not in your settings — so the window opens at 20 again next time. It is a question you are asking, not a property of the furniture.</p>
+
+<h3>Species data, and being told when there is none</h3>
+<p>Both checks look up their numbers by matching a material's name against a small built-in table of species — a material called "Red Oak 4/4 S4S" is matched as Red Oak, and one called "Birch Plywood" as Birch Plywood. If nothing in the table appears in a material's name, the parts in that material are reported as <strong>not checked</strong>, by name, rather than quietly skipped. If you see that row, renaming the material to include a common species name is usually all it takes.</p>
+<p>When there is nothing to report at all, the window says so <em>and</em> says what it looked at — how many boards were candidates and how many joints could have held one. That matters, because "nothing to flag" and "nothing was checked" look identical otherwise. The commonest reason for a silent all-clear is joinery that has not been added yet: two boards placed against each other are not joined, and both checks reason about boards a <em>joint</em> holds.</p>
+
+<h3>Excluded parts, and the Apprentice</h3>
+<p>Unlike every report under <a href="#shop-outputs">Shop outputs</a>, this window checks <strong>every part in the design</strong>, including any excluded from the shop outputs — a check is about the design, not about what gets cut — and it says so in its own footer.</p>
+<p>The Apprentice runs the same two checks: ask it "will my shelves sag?" or "is anything going to move on me?" and it reads the identical findings and answers with the same numbers you see here. It can be asked what to change, too, and it knows the levers. It cannot fix anything on its own from a check — nothing in a check is a command — so any change it makes is one you asked for. One difference worth knowing: the Apprentice's version leaves out parts excluded from the shop outputs, and tells itself so, which is why its list can be shorter than this window's.</p>
+
+<hr class="section-end">
+<h2 id="apprentice">The AI Apprentice</h2>
+
+<p>The AI Apprentice panel (a tab of the bottom dock, or unpinned into its own window) is an AI assistant that can start a design from scratch or edit the one you have open — by talking to it in plain language. It works through the exact same commands the rest of the UI uses, so anything it does is a normal, undoable edit — <kbd>Ctrl+Z</kbd> undoes a whole Apprentice turn as one step, the same as any manual edit.</p>
+
+<h3>Setting it up</h3>
+<p>The Apprentice needs an Anthropic API key. Without one, the chat panel shows a short pitch for what it can do against your open design, a few example prompts, and a <strong>Connect…</strong> button — click it, and a small dialog walks you through creating a key at console.anthropic.com and pasting it in; a valid key unlocks the panel immediately, no restart needed. You can also set the <code>ANTHROPIC_API_KEY</code> environment variable, or paste a key directly under <span class="menu-path">Tools → Options</span>, which is also where Connect's own key lives once you have one. Either way, the rest of the editor works exactly as normal without a key — nothing outside the chat panel is affected. If a request fails once connected (a dropped connection, a rate limit), the panel shows what went wrong with a Retry button.</p>
+
+<h3>What it can and can't do</h3>
+<p>The Apprentice can add and edit parts, features, joints, groups, and layers; read back the cut list, sheet layout, and hardwood purchase report; and describe the current state of the project. It edits the document the same way you do — through validated commands — so it's bound by the exact same refusal rules as the UI: an impossible cut is refused to the Apprentice exactly as it would be to you, with the reason fed back so it can try something else. It can organize parts onto layers, but per <a href="#groups-layers">Groups &amp; layers</a> it can never toggle a layer's visibility — that's a view preference, not something a document edit can express. It can also keep your design notes for you, replacing the whole text on request (see <a href="#shop-outputs">Design notes</a>) — ask it to add something and it will carry forward what's already there. It doesn't measure photos or attempt photorealistic rendering; a photo-drafted design is a plausible starting point for you to refine, not a precise reconstruction.</p>
+
+<h3>Starting from a photo</h3>
+<p><span class="menu-path">File → New From Photo…</span> takes a picture and a short description of what you want built, and the Apprentice drafts a starting design step by step, the same way it would from a text conversation. Treat the result as a first draft — proportions and details are worth checking and correcting afterward, the same as any other Apprentice-drafted change.</p>
+
+<h3>Copying text out of the chat</h3>
+<p>Transcript text is selectable — drag across any message and <kbd>Ctrl+C</kbd> copies the selection. Right-click a message for <strong>Copy</strong> (the selection, or the whole message if you haven't selected anything) and <strong>Copy Conversation</strong>, which puts the entire exchange on the clipboard labelled by speaker. Right-clicking one of <em>your own</em> messages also offers <strong>Reuse This Message</strong>, which drops it back into the input box ready to edit and send again — the quick way to repeat a request with one number changed.</p>
+
+<h3>Verbosity and model</h3>
+<p>The <strong>Verbose</strong> checkbox in the chat panel switches between a one-line "ran N commands" summary per turn and a full line-by-line account of exactly what each command did — useful when you want to see precisely what changed. The model picker (when visible) lets you switch between Opus 5, Sonnet 5, and Haiku 4.5 mid-conversation; a switch takes effect on your next message, never mid-turn.</p>
+
+<h3>Costs</h3>
+<p>Above the chat input, a running cost line shows three approximate dollar figures separated by <code>·</code>: what your <strong>last</strong> message cost, your running total for <strong>this session</strong>, and this <em>document's</em> whole-life total since it started tracking costs. Each hides independently when it has nothing honest to report — a turn run on a model with no published rate on file simply shows no "last" figure for that turn, and the moment <em>any</em> turn in the session runs unpriced, "session" hides for the rest of that session rather than quietly under-counting it. "Lifetime" is the one exception: once a document has any usage history at all, it keeps showing a total, prefixed <code>≥</code> once any of that history includes an unpriced turn — "at least this much" is always a meaningful thing to say, even when an exact figure isn't. These are estimates against published list pricing, not a bill — treat them as a rough sense of scale, not an invoice.</p>
+<p>A <strong>session cost cap</strong> (Tools → Options, $10 by default, editable or blank to disable) keeps a runaway conversation from becoming a surprise on the bill: once the session total reaches it, sending another message is refused with a note saying so, and a single turn already in flight — the kind a photo-initiated draft can run to dozens of rounds — is stopped mid-way at the first round that would cross it, keeping whatever it already changed as one undoable step. Hover the cost line to see the cap that's currently set. A turn on a model with no published rate can't be measured mid-flight, so the cap can't stop one early, though it still counts once that turn finishes and a price becomes known.</p>
+
+<hr class="section-end">
+<h2 id="files-sidecars">Files &amp; sidecars</h2>
+
+<p>The design itself is one self-contained <code>.swdt</code> file — parts, materials, joints, groups, layers, parameters. Depending on what you've used, a design may also carry a few sidecar files that live alongside it and share its base name:</p>
+<ul>
+  <li>A <strong><code>.assets</code></strong> folder holding any reference photos you've attached (from a photo-initiated project, or added afterward).</li>
+  <li>A <strong>chat transcript</strong> sidecar, recording the Apprentice conversation history for this document (including its lifetime cost total).</li>
+  <li>A <strong>view state</strong> sidecar, holding per-document preferences that are never part of the design itself — drawing page setup and zoom, and which layers are currently hidden.</li>
+</ul>
+<p><span class="menu-path">File → Save As…</span> moves every sidecar that exists to the new name along with the main file, so a renamed or copied design keeps its photos, its conversation history, and its layer visibility intact.</p>
+
+<hr class="section-end">
+<h2 id="trial-purchase">Trial and purchase</h2>
+
+<p>SawDust from the Microsoft Store starts as a <strong>30-day trial with every feature</strong> — nothing is held back while it runs. The Store keeps the clock, and buying is a one-time purchase of $39.99: no subscription, no tiers. While the trial runs, the title bar says <em>(trial)</em>, <span class="menu-path">Help → About SawDust…</span> shows how many days are left, and the Welcome window's header carries the same line.</p>
+
+<h3>When the trial ends</h3>
+<p>An expired trial turns SawDust into a viewer. The title bar says <em>(trial expired)</em>, and these stop — each one opens the Buy dialog instead:</p>
+<ul>
+  <li><strong>Saving</strong> — Save, Save As, and Save as Template. The automatic crash-recovery copy stops too, so nothing is written while the trial is expired.</li>
+  <li><strong>Every export and print</strong> — the cut list and hardware exports, and Print, Export XPS, Export PDF and Export DXF in Shop Drawings, Sheet Layout, Hardwood Purchase and Part Labels.</li>
+  <li><strong>The AI Apprentice</strong> — the chat panel shows a short note and a <strong>Buy SawDust…</strong> button in place of the conversation, and File → New From Photo… opens the Buy dialog.</li>
+</ul>
+<p>Everything else keeps working: open any design (including a crash-recovery copy left from before), edit it, orbit and measure, undo and redo, run the generators, regenerate stale joints, and page through Shop Drawings, Sheet Layout, Hardwood Purchase and Part Labels on screen.</p>
+
+<h3>Buying</h3>
+<p><span class="menu-path">Help → Buy SawDust…</span> is on the menu while you're trying SawDust or once the trial has ended. Its <strong>Buy</strong> button opens the Microsoft Store's own purchase sheet. As soon as the purchase goes through, everything above unlocks — there's no need to restart, and whatever you were doing (a Save, an export) can carry straight on. <strong>Not now</strong> closes the dialog and changes nothing.</p>
+<p>A copy of SawDust installed any other way — built from source, or from the standalone installer — isn't a Store copy: it has no trial and runs as the full app.</p>
+
+<hr class="section-end">
+<h2 id="keyboard-shortcuts">Keyboard shortcuts</h2>
+
+<p>The full, current list of every gesture in the app — viewport navigation, selection, the gizmo, dialogs, the drawings viewer — lives in one place: <span class="menu-path">Help → Keyboard Shortcuts…</span>. It's kept in sync with the app itself, so it's the definitive reference rather than a copy that can drift out of date. A few of the ones you'll reach for constantly: <kbd>Ctrl+Z</kbd> / <kbd>Ctrl+Y</kbd> to undo/redo, <kbd>F</kbd> to zoom to the current selection, <kbd>Home</kbd> to reset the view, <kbd>Del</kbd> to delete whatever's selected, and <kbd>Ctrl+D</kbd> to duplicate a part.</p>
+
+<hr class="section-end">
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3>The AI Apprentice panel says there's no API key</h3>
+<p>Set the <code>ANTHROPIC_API_KEY</code> environment variable, or add a key under <span class="menu-path">Tools → Options</span>. The rest of the app works fully without one — this only affects the chat panel.</p>
+
+<h3>The cost line doesn't show a figure for one of "last / session / lifetime"</h3>
+<p>That's not a bug — it means the relevant turn(s) ran on a model this build doesn't have a published rate for (an unreleased or unusual model id). See <a href="#apprentice">The AI Apprentice</a> for exactly which figure hides under which condition; "lifetime" is deliberately the one that keeps showing something (prefixed <code>≥</code>) rather than disappearing.</p>
+
+<h3>A feature or joint edit was refused</h3>
+<p>Read the message — it names exactly what conflicts with what (two cuts that overlap in a way the kernel can't produce, a dimension outside the part's stock, and so on). This is the standing "refuses and says why, never crashes" rule described in <a href="#features-joinery">Features &amp; joinery</a>; it's telling you the cut genuinely can't be made as described, not that something is broken.</p>
+
+<h3>A part is missing from the viewport</h3>
+<p>Before assuming it's gone, check whether it's simply on a <strong>hidden layer</strong> (Layers tab) — a part can be invisible in the 3D view while still being fully present in the document, the cut list, and every shop output. Toggling that layer's eye back on brings it back into view instantly; nothing about the part itself was ever touched. It's also worth checking whether the part is inside a permanent group that's been moved or rotated somewhere unexpected — selecting the group from the project tree will always find it even if a viewport click doesn't land on it.</p>
+
+<h3>The manual itself looks stale after an update</h3>
+<p><span class="menu-path">Help → User Manual…</span> re-extracts and reopens this file every time you click it, so a second click always shows the current version — there's no separate "refresh" step needed.</p>
+
+<footer>SawDust — Study's Woodworking Design Tool</footer>
+</main>
+</div>
+</body>
+</html>
