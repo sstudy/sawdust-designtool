@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SawDust — Privacy Policy</title>
+<meta name="description" content="What SawDust stores on your computer, what the optional AI Apprentice sends to Anthropic, and what is never collected.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <nav><a href="./">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  <h1>Privacy Policy</h1>
+  <p class="meta"><strong>Effective date:</strong> 17 September 2026<br>
+  <strong>Applies to:</strong> SawDust — A Woodworking Design Tool, version 6.0 and later, for Windows</p>
+</header>
+<main>
+  <p>SawDust is a desktop design tool. It has no accounts, no sign-in, and no SawDust-operated server. Your designs stay on your computer. The one feature that sends design data anywhere is the optional AI Apprentice, and it sends that data to Anthropic, using an API key that you supply, only when you use it.</p>
+
+  <h2>What SawDust does not do</h2>
+  <ul>
+    <li>It does not collect, transmit, or sell personal information to the developer or to anyone else.</li>
+    <li>It does not send usage analytics or crash reports over the network.</li>
+    <li>It does not create a user, device, or install identifier.</li>
+    <li>It does not contain advertising or third-party tracking.</li>
+    <li>It does not check for updates itself. Updates arrive through the Microsoft Store.</li>
+  </ul>
+
+  <h2>Data that stays on your computer</h2>
+  <p>SawDust stores the following on your own machine. None of it is uploaded by the app.</p>
+  <ul>
+    <li><strong>Your designs</strong> (<code>.swdt</code> files), wherever you save them, along with small companion files beside each design: the AI Apprentice chat transcript, the project change log, view settings, and any reference photos you attach.</li>
+    <li><strong>Settings</strong>, in your local application data folder (<code>%LOCALAPPDATA%\SawDust</code>): window layout, recently opened files, your materials library, shop options, stock presets, and any templates you save.</li>
+    <li><strong>Crash-recovery copies</strong> of unsaved work, in the same folder, so a design can be restored after an unexpected exit.</li>
+    <li><strong>A diagnostic log</strong> (<code>sawdust.log</code>), in the same folder. It records application events and error details, which can include file names and paths. It is never transmitted. If you contact support you may choose to share it, and that choice is yours.</li>
+  </ul>
+  <p>Uninstalling SawDust does not delete your designs. You can delete any of the files above at any time.</p>
+
+  <h2>The AI Apprentice (optional)</h2>
+  <p>The AI Apprentice is off until you connect it. It works only with your own Anthropic API key, and requests go <strong>directly from your computer to Anthropic's API</strong>. They do not pass through any server operated by the developer of SawDust, and the developer never receives them.</p>
+  <p>If you never enter an API key, SawDust sends nothing to Anthropic.</p>
+  <p>When you have connected a key:</p>
+  <ul>
+    <li><strong>Opening the Apprentice panel</strong> makes one request to Anthropic to confirm that the key works. That request contains no design data.</li>
+    <li><strong>Sending a message</strong> transmits to Anthropic:
+      <ul>
+        <li>the text you typed;</li>
+        <li>any photo you attached to that message, or chose when starting a design from a photo;</li>
+        <li>a description of the design you have open: its file name (not its folder path), the project name and notes, parameters, materials and their costs, every part with its dimensions and position, joints, groups, layers, hardware, and the names and captions of attached reference images;</li>
+        <li>the results of any reports the Apprentice requests while working, such as the cut list, sheet layout, hardware list, or design checks;</li>
+        <li>today's date and your display unit.</li>
+      </ul>
+    </li>
+  </ul>
+  <p>Anthropic processes this data under its own terms and privacy policy, and bills you directly for API usage. Review Anthropic's policies at <a href="https://www.anthropic.com">anthropic.com</a> before using the feature. Do not include information in a design's name or notes, or in a photo, that you would not want sent to Anthropic.</p>
+  <p><strong>Your API key</strong> is stored on your computer in encrypted form, protected by Windows for your user account (DPAPI). Alternatively, SawDust reads it from the <code>ANTHROPIC_API_KEY</code> environment variable. The key is sent only to Anthropic. It is never written to the log.</p>
+  <p><strong>Chat transcripts</strong> are saved beside your design so you can read them later. A saved transcript is not re-sent to Anthropic when you reopen the design, because each session starts a new conversation.</p>
+
+  <h2>Microsoft Store purchases and the free trial</h2>
+  <p>If you install SawDust from the Microsoft Store, the app asks Windows whether your copy is a trial, an expired trial, or a purchased copy. When you choose to buy, SawDust opens the Microsoft Store's own purchase window. <strong>Payment is handled entirely by Microsoft.</strong> SawDust never sees or stores your payment details, your Microsoft account, or your address. Microsoft's handling of that information is covered by the <a href="https://privacy.microsoft.com/privacystatement">Microsoft Privacy Statement</a>.</p>
+
+  <h2>Diagnostic reporting</h2>
+  <p>SawDust does not transmit diagnostics. The app contains a developer diagnostic option that can forward application events to a server address. It is inactive unless someone manually creates a configuration file on the computer naming that address; SawDust never creates this file, no address ships with the app, and there is no such file on a Store installation.</p>
+
+  <h2>Children</h2>
+  <p>SawDust is a general-purpose design tool and is not directed at children. It does not knowingly collect personal information from anyone, including children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If a future version of SawDust changes what data leaves your computer, this policy will be updated before that version is released, and the effective date above will change.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <a href="mailto:sawdust.designtool@outlook.com">sawdust.designtool@outlook.com</a></p>
+</main>
+<footer>
+  <p>&copy; 2026 Stephen Study &middot; <a href="mailto:sawdust.designtool@outlook.com">sawdust.designtool@outlook.com</a></p>
+</footer>
+</body>
+</html>

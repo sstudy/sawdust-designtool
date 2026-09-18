@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in SawDust did not work the way it should.
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: SawDust version
+      description: From Help → About SawDust.
+      placeholder: "6.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What did you do?
+      description: The steps, in order, that lead to the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include the exact wording of any message SawDust showed. Screenshots can be dragged into this box.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: >
+        For a crash, the last lines of %LOCALAPPDATA%\SawDust\sawdust.log help. It can contain file names and
+        paths, so read it before pasting. Do not attach a .swdt file here unless you are happy for it to be public;
+        email sawdust.designtool@outlook.com instead.
