@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SawDust — Gallery</title>
+<meta name="description" content="Designs and templates shared by SawDust users, free to open, study and adapt.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .design { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .design img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rule); }
+  .design h2 { margin-top: 0; }
+  .design ul { margin: 0.5rem 0; }
+  @media (min-width: 600px) { .design { grid-template-columns: 1fr 1fr; align-items: start; } }
+</style>
+</head>
+<body>
+<header>
+  <nav><a href="./">Home</a><a href="manual.html">User Manual</a><a href="gallery.html">Gallery</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+  <h1>Gallery</h1>
+  <p class="tagline">Designs shared by SawDust users</p>
+</header>
+<main>
+  <p>Every design here is an ordinary <code>.swdt</code> file: download it, open it with <strong>File &rarr; Open</strong>, and change whatever you like. They are shared under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, so you may use and adapt them with credit to the maker. To add your own, see <a href="#share">sharing a design</a> below.</p>
+
+  <div class="card design">
+    <img src="gallery/hifi-record-storage-bench/bench.png" alt="A long, low walnut cabinet with two sliding doors, a green cushion on top and tapered feet, shown in SawDust's viewport">
+    <div>
+      <h2>Hi-Fi Record Storage Bench</h2>
+      <p>A long, low walnut-plywood cabinet with two sliding doors, five dividers for LP storage, a cushioned seat and six tapered solid-walnut feet. About 80" wide and knee height; the turntable sits on the open end.</p>
+      <p><strong>Shows:</strong> a plywood carcass with a back in grooves, solid banding on every visible edge, dividers in dados driven by parameters, sliding doors in top and bottom grooves of different depths, tapered feet, mitred banding corners.</p>
+      <ul>
+        <li><a href="gallery/hifi-record-storage-bench/hifi-record-storage-bench.swdt" download>Download the design</a></li>
+        <li><a href="https://github.com/sstudy/sawdust-designtool/tree/main/gallery/hifi-record-storage-bench">Notes and files on GitHub</a></li>
+      </ul>
+      <p class="meta">By Stephen Study</p>
+    </div>
+  </div>
+
+  <h2 id="share">Sharing a design</h2>
+  <p>Open a <a href="https://github.com/sstudy/sawdust-designtool/issues/new/choose">Share a design</a> issue and attach your <code>.swdt</code> and a screenshot. Attach only the design file itself, not the <code>.chat.json</code>, <code>.log.json</code> or <code>.view.json</code> files SawDust keeps beside it, and check the project name and notes for anything private first. The full guidelines are in the <a href="https://github.com/sstudy/sawdust-designtool/blob/main/gallery/README.md">gallery README</a>.</p>
+  <p>A <strong>template</strong> (a design plus its <code>template.json</code>) is installed by copying its folder into <code>%LOCALAPPDATA%\SawDust\templates\</code>; it then appears under <strong>Edit &rarr; Insert Template&hellip;</strong>.</p>
+</main>
+<footer>
+  <p>&copy; 2026 Stephen Study &middot; <a href="mailto:sawdust.designtool@outlook.com">sawdust.designtool@outlook.com</a></p>
+</footer>
+</body>
+</html>

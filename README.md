@@ -5,3 +5,4 @@ The public face of [SawDust](https://apps.microsoft.com/detail/9PBK1LRK9DVN), a 
 - **Website:** the pages in this repo, served by GitHub Pages.
 - **Issues:** bug reports and feature requests from SawDust users live in this repo's [Issues](../../issues). The app's source code is in a separate, private repository; issues are triaged here and worked on there.
 - **Support email:** sawdust.designtool@outlook.com
+- **Gallery:** user-shared designs and templates live in [`gallery/`](gallery/) and are published under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). See [`gallery/README.md`](gallery/README.md) for how to share one.

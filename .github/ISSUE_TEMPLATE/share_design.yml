@@ -1,0 +1,47 @@
+name: Share a design
+description: Offer a design or template for the community gallery.
+labels: ["gallery"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Thanks for sharing. Attach **only** the `.swdt` (plus `template.json` for a template) and a screenshot —
+        not the `.chat.json`, `.log.json` or `.view.json` files beside it. Check File → Design Notes and the project
+        name for anything you would rather keep private. Gallery designs are published under
+        [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+  - type: input
+    id: title
+    attributes:
+      label: Design name
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What is it, and what does it show off?
+      description: A paragraph for the gallery page — the piece, rough size, and any SawDust features worth pointing out.
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Files
+      description: Drag the .swdt and a screenshot into this box. GitHub may need the .swdt zipped first.
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How should you be credited?
+      placeholder: A name, a handle, or "anonymous"
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Terms
+      options:
+        - label: This is my own design, and I am sharing it under CC BY 4.0.
+          required: true
+        - label: I have removed anything private from the project name, notes and files.
+          required: true

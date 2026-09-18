@@ -1,0 +1,2252 @@
+{
+  "schemaVersion": 21,
+  "name": "Hi-Fi Record Storage Bench",
+  "notes": "",
+  "parameters": [
+    {
+      "id": "01da7d3f-4eb5-4e57-a3a7-d512d6bf8a11",
+      "name": "CarcaseDepth",
+      "value": 16.5
+    },
+    {
+      "id": "c323e48f-c8bc-4bcb-8bb0-3126f7c9e8da",
+      "name": "CarcaseWidth",
+      "value": 80.25
+    },
+    {
+      "id": "df82671b-2f71-4ea7-b93b-52c9159e933f",
+      "name": "BandingThickness",
+      "value": 0.75
+    },
+    {
+      "id": "231fb2e0-3b7f-4d2e-9e52-6d8d09bb868e",
+      "name": "OverallHeight",
+      "value": 17
+    },
+    {
+      "id": "fbe6cc22-4700-49f4-b3dc-39972d379b9f",
+      "name": "CarcaseHeight",
+      "value": 15
+    },
+    {
+      "id": "9cd95cb5-d46d-482d-a67a-7fe86a11cf6f",
+      "name": "DadoDepth",
+      "value": 0.25
+    },
+    {
+      "id": "26db1254-5dc7-4dc1-8045-faa7a3454671",
+      "name": "DividerSetback",
+      "value": 3
+    },
+    {
+      "id": "b628ad85-5f80-4981-b3fd-60ff1938356c",
+      "name": "CushionThickness",
+      "value": 3
+    },
+    {
+      "id": "1e9fefd0-31a9-4730-aa97-0b4131fc0592",
+      "name": "DoorGrooveWidth",
+      "value": 0.8125
+    },
+    {
+      "id": "0c7edf9a-049f-4d8b-9a7c-343fb5022565",
+      "name": "DoorGrooveDepthTop",
+      "value": 0.5
+    },
+    {
+      "id": "380798d0-aea8-4736-a58e-67955766d54c",
+      "name": "DoorGrooveDepthBottom",
+      "value": 0.25
+    },
+    {
+      "id": "73f4e3f8-440c-4b9a-a2de-c18db512ee76",
+      "name": "DoorClearance",
+      "value": 0.0625
+    },
+    {
+      "id": "2138ef78-df12-4f29-a691-dad337a27a8f",
+      "name": "DoorPullDiameter",
+      "value": 1
+    },
+    {
+      "id": "1d9c4582-ad41-49b1-a8bc-0ef15f8bf68f",
+      "name": "DoorPullInset",
+      "value": 3
+    },
+    {
+      "id": "6562d0ee-8160-47d9-87bd-a38547782c30",
+      "name": "DoorTrackRear",
+      "value": 1.1875
+    },
+    {
+      "id": "62a08882-9ee4-4fef-ab68-8031bebc7fbd",
+      "name": "DoorOverlap",
+      "value": 0.375
+    },
+    {
+      "id": "6cfad85e-c6db-441a-9d90-5f54471ebd6d",
+      "name": "FiddleSize",
+      "value": 0.75
+    },
+    {
+      "id": "22b9dbe8-25ec-4139-b587-b6c6af0afa62",
+      "name": "FiddleSetback",
+      "value": 0.25
+    }
+  ],
+  "materials": [
+    {
+      "id": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "name": "Plywood 3/4\" Walnut",
+      "kind": "sheet",
+      "color": "#5A4632",
+      "nominalThickness": 0.75,
+      "costPerSheet": 68,
+      "sheetLength": 96,
+      "sheetWidth": 48
+    },
+    {
+      "id": "6307972b-d3eb-4471-bfa3-8ce5787cac55",
+      "name": "Plywood 1/4\"",
+      "kind": "sheet",
+      "color": "#E0C79A",
+      "nominalThickness": 0.25,
+      "costPerSheet": 42,
+      "sheetLength": 96,
+      "sheetWidth": 48
+    },
+    {
+      "id": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "name": "Walnut",
+      "kind": "solid",
+      "color": "#5A4632",
+      "nominalThickness": 0
+    },
+    {
+      "id": "f4e22654-173f-47b5-8525-79e2dd7228e8",
+      "name": "Album 1",
+      "kind": "solid",
+      "color": "#FF2A7F",
+      "nominalThickness": 0
+    },
+    {
+      "id": "d430b2e6-e558-498f-8ffd-96d6402e453c",
+      "name": "Album 2",
+      "kind": "solid",
+      "color": "#557FFF",
+      "nominalThickness": 0
+    },
+    {
+      "id": "652b1486-80f6-4f69-a1de-cf774e2f0f68",
+      "name": "Album 3",
+      "kind": "solid",
+      "color": "#AAFF7F",
+      "nominalThickness": 0
+    },
+    {
+      "id": "5b69b41d-1970-4331-bae1-50064dfc105f",
+      "name": "Cushion (foam + fabric)",
+      "kind": "solid",
+      "color": "#5B865B",
+      "nominalThickness": 3
+    },
+    {
+      "id": "5c4cde14-6193-469f-bf78-52fd3bde041a",
+      "name": "Antique Brass",
+      "kind": "solid",
+      "color": "#c3b77a",
+      "nominalThickness": 0
+    },
+    {
+      "id": "0d3016de-a6fe-40ec-8b76-ee37ca011e9f",
+      "name": "Clasp Finger Pull",
+      "kind": "solid",
+      "color": "#686b58",
+      "nominalThickness": 0
+    }
+  ],
+  "parts": [
+    {
+      "id": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "name": "Top",
+      "groupPath": "Carcase/Top",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarCaseWidth - (2 * BandingThickness)",
+      "width": "CarcaseDepth - BandingThickness",
+      "thickness": "3/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -14.250000000000004,
+          "z": 19
+        },
+        "rotation": {
+          "x": -6.123233995736766E-17,
+          "y": -1,
+          "z": 1.6653345369377348E-16,
+          "w": 1.0197233050851682E-32
+        }
+      },
+      "features": [
+        {
+          "type": "rabbet",
+          "side": "back",
+          "face": "top",
+          "width": "1/4",
+          "depth": "3/8",
+          "id": "ed5bd3b3-3d09-4ad2-a40b-751569448fae"
+        },
+        {
+          "type": "groove",
+          "face": "top",
+          "position": "DoorTrackRear",
+          "width": "DoorGrooveWidth",
+          "depth": "DoorGrooveDepthTop",
+          "id": "19944b99-9cb2-4c26-8402-9481dcfcd74e"
+        },
+        {
+          "type": "rabbet",
+          "side": "front",
+          "face": "top",
+          "width": "DoorGrooveWidth",
+          "depth": "DoorGrooveDepthTop",
+          "id": "d3335ef9-f1bc-49c5-90bb-b94e89f68a58"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "39",
+          "width": "3/4",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "a4f08f1b-7dd5-4ae9-89f3-2f41aa254961"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "12.5",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "be63e973-bcae-4c65-943f-b734b5ed95ad"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "25.75",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "36609a28-6529-4034-97d0-88bd53737306"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "52.25",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "99c9a3c7-f6f8-4d37-af3d-f529b8c6fbc2"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "65.5",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "885efcb8-6d28-4370-ad38-545f5694c6bf"
+        }
+      ]
+    },
+    {
+      "id": "c2811775-b3c9-4506-a6b7-ef08279bc643",
+      "name": "Bottom",
+      "groupPath": "Carcase/Bottom",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseWidth - (2 * BandingThickness)",
+      "width": "CarCaseDepth - BandingThickness",
+      "thickness": "3/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 0,
+          "y": -14.250000000000004,
+          "z": 4
+        },
+        "rotation": {
+          "x": -4.4068773779038154E-17,
+          "y": 6.123233995736765E-17,
+          "z": -6.123233995736766E-17,
+          "w": -1
+        }
+      },
+      "features": [
+        {
+          "type": "rabbet",
+          "side": "back",
+          "face": "top",
+          "width": "1/4",
+          "depth": "3/8",
+          "id": "3f82cf06-d511-4571-8dd5-50a77c0679f8"
+        },
+        {
+          "type": "groove",
+          "face": "top",
+          "position": "DoorTrackRear",
+          "width": "DoorGrooveWidth",
+          "depth": "DoorGrooveDepthBottom",
+          "id": "f5961088-56a5-4310-b38e-5ab056c236f2"
+        },
+        {
+          "type": "rabbet",
+          "side": "front",
+          "face": "top",
+          "width": "DoorGrooveWidth",
+          "depth": "DoorGrooveDepthBottom",
+          "id": "ec06c1a8-22e8-4935-a39d-18b928705857"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "39",
+          "width": "3/4",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "2ac866c6-1441-4c32-89b2-b6e307080eaf"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "12.5",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "a94bb6b0-97a5-4e73-b924-768679e28634"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "25.75",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "2dd8fb2f-b85d-4520-a20f-f1a37917d7e9"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "52.25",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "47454d30-dcfd-40c2-80a8-470be2c90205"
+        },
+        {
+          "type": "dado",
+          "face": "top",
+          "position": "65.5",
+          "width": "0.75",
+          "depth": "1/4",
+          "stopFront": "3.25",
+          "id": "bd52ec23-fc15-4197-ab4b-f6eeef0d6f05"
+        }
+      ]
+    },
+    {
+      "id": "43344a41-1407-44c5-aca3-6e1806f92b5c",
+      "name": "T Front Banding",
+      "groupPath": "Carcase/Top/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseWidth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -0.75,
+          "y": -15.000000000000004,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "34129dca-f80f-43fa-9709-861ef2bdbe03"
+        },
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "72912951-907b-44df-924e-81e51197d00a"
+        }
+      ]
+    },
+    {
+      "id": "bb7e946b-5c34-4ef3-9a6a-22940cbb7027",
+      "name": "B Front Banding",
+      "groupPath": "Carcase/Bottom/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseWidth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -0.75,
+          "y": -15,
+          "z": 4
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "4b8c00be-8148-49c8-9047-6f2fa5f38a87"
+        },
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "9508dc9d-99a8-4e2f-8f6b-bec019f2fef5"
+        }
+      ]
+    },
+    {
+      "id": "e5ec47ad-81ab-48b4-92a4-19d2f94c0de4",
+      "name": "T Right Banding",
+      "groupPath": "Carcase/Top/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarCaseDepth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -14.999999999999995,
+          "z": 19
+        },
+        "rotation": {
+          "x": -0.7071067811865476,
+          "y": -0.7071067811865476,
+          "z": 9.71445146547012E-17,
+          "w": 9.71445146547012E-17
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "01cfc50f-61a7-461e-b815-bef475d6783a"
+        }
+      ]
+    },
+    {
+      "id": "85990607-6ceb-4d32-a6c0-9aa9e154987f",
+      "name": "Right Banding",
+      "groupPath": "Carcase/Bottom/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseDepth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -14.999999999999995,
+          "z": 4.75
+        },
+        "rotation": {
+          "x": -0.7071067811865476,
+          "y": -0.7071067811865476,
+          "z": 9.71445146547012E-17,
+          "w": 9.71445146547012E-17
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "4fe98c9f-cfd9-4d96-afe0-cc1b785568e3"
+        }
+      ]
+    },
+    {
+      "id": "73705e0a-53a1-4948-b22b-9a466dbe7fa8",
+      "name": "T Left Top Banding",
+      "groupPath": "Carcase/Top/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarCaseDepth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -1.6653345369377348E-16,
+          "y": -14.999999999999995,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": -1.4044231746647587E-16,
+          "y": -1.4044231746647587E-16,
+          "z": -0.7071067811865476,
+          "w": -0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "0bf9d7a7-5e86-4f85-8b31-786fa98c1c42"
+        }
+      ]
+    },
+    {
+      "id": "67285633-3266-47ec-8737-a8fa0527df32",
+      "name": "B Left Banding",
+      "groupPath": "Carcase/Bottom/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseDepth",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 0,
+          "y": -15,
+          "z": 4
+        },
+        "rotation": {
+          "x": -1.4044231746647587E-16,
+          "y": -1.4044231746647587E-16,
+          "z": -0.7071067811865476,
+          "w": -0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "f92413ca-0f04-490c-9da4-48e4fdbc6e30"
+        }
+      ]
+    },
+    {
+      "id": "fd85b96d-eafb-476e-bcd0-2f628de96bbe",
+      "name": "Right Side",
+      "groupPath": "Carcase/Side",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "CarcaseDepth - BandingThickness",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 79.5,
+          "y": -14.25,
+          "z": 4.75
+        },
+        "rotation": {
+          "x": 0,
+          "y": -0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "rabbet",
+          "side": "back",
+          "face": "top",
+          "width": "1/4",
+          "depth": "3/8",
+          "id": "8ff69c23-555e-473f-9379-c4f389cf760b"
+        }
+      ]
+    },
+    {
+      "id": "e4747b8e-e151-4ea6-a17c-c966a5423148",
+      "name": "Left Side",
+      "groupPath": "Carcase/Side",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "CarcaseDepth - BandingThickness",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": -0.7500000000000044,
+          "y": -14.25,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "rabbet",
+          "side": "back",
+          "face": "top",
+          "width": "1/4",
+          "depth": "3/8",
+          "id": "361a59a0-d22c-4335-8980-8657c826a7d1"
+        }
+      ]
+    },
+    {
+      "id": "4f8a8a9a-d432-4098-ac40-54167e50492d",
+      "name": "RS Front Banding",
+      "groupPath": "Carcase/Side/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - (2 * BandingThickness)",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 79.5,
+          "y": -15,
+          "z": 4.75
+        },
+        "rotation": {
+          "x": 0,
+          "y": -0.7071067811865477,
+          "z": 0,
+          "w": 0.7071067811865475
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "aa02d82c-11a6-4d9a-bf1c-a3ea6685744c",
+      "name": "LS Front Banding",
+      "groupPath": "Carcase/Side/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - (2 * BandingThickness)",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 7.105427357601002E-15,
+          "y": -15,
+          "z": 4.75
+        },
+        "rotation": {
+          "x": 0,
+          "y": -0.7071067811865477,
+          "z": 0,
+          "w": 0.7071067811865475
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "8af21100-ffd0-43fe-9196-7a3b4fba7bb6",
+      "name": "Back",
+      "groupPath": "Carcase",
+      "quantity": 1,
+      "materialId": "6307972b-d3eb-4471-bfa3-8ce5787cac55",
+      "stock": "solid",
+      "length": "CarcaseWidth - (2 * 3/8)",
+      "width": "CarcaseHeight - (2 * 3/8)",
+      "thickness": "1/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -0.375,
+          "y": 1.499999999999993,
+          "z": 4.375
+        },
+        "rotation": {
+          "x": 0.7071067811865474,
+          "y": 0,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "ab987d87-9123-40a6-9460-a58b96cb6972",
+      "name": "Foot 1",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 1.9999999999999956,
+          "y": -1,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "9e66fd72-b674-4758-a212-9f129878a378"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "429a1036-31e1-477a-bca7-979e1cdaed17"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "873beb6d-ef2a-483a-8527-876c905b52b3"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "4768d80f-9085-4eac-867e-398582a7598e"
+        }
+      ]
+    },
+    {
+      "id": "c3aba2be-7d25-44b6-807c-d59cd7aa785f",
+      "name": "Foot 2",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 2.000000000000007,
+          "y": -14.25,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "7078e185-57df-4ff0-9c7a-f7637c7d29a7"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "10a2b641-a8c2-4349-ae4d-d0945862d9d9"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "18901fa0-850c-46ca-801a-f26cb38b6150"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "ad6b3905-59bb-4ecd-b292-7886ee9452d5"
+        }
+      ]
+    },
+    {
+      "id": "37334c3c-5311-4134-a4b3-c5e3dff8bd04",
+      "name": "Foot 3",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 40.375,
+          "y": -14.25,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "8501e460-eaf4-45f4-84cf-e911aa0eda6f"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "10a7ad4b-224a-4072-b6e2-21b94604cfd6"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "6b8a2ed9-5706-45e5-b002-9764765a1b53"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "1041eca0-acfe-4abd-a9b0-87502756bc4e"
+        }
+      ]
+    },
+    {
+      "id": "71e5e46a-ff43-4d4e-bd52-ad9ffd8c09da",
+      "name": "Foot 4",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 40.375,
+          "y": -1,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "a61734c8-cf59-49c6-bf3e-17f0ca232886"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "d10d65e9-030f-4580-bc3a-d066ca9dc16b"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "cb285d09-78ce-409d-971d-456c4d1ee24c"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "4d55eb08-fd42-4e47-ae1e-f2d7cb0e3dd2"
+        }
+      ]
+    },
+    {
+      "id": "441ba5aa-d49d-43cb-8d72-ba5077e6147c",
+      "name": "Foot 5",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -1,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "36c83463-d7e8-4805-ab05-b658eb8cdc15"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "77ff6e4d-555f-4669-978e-d18fe32df359"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "a04626d3-6a19-491f-bfed-57298525345e"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "a91ba802-3548-4e85-a21a-33f4e01bbc5e"
+        }
+      ]
+    },
+    {
+      "id": "2ad8a31e-05fd-4524-8aa1-e02541c1d457",
+      "name": "Foot 6",
+      "groupPath": "Feet",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "4",
+      "width": "2",
+      "thickness": "2",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -14.25,
+          "z": 4
+        },
+        "rotation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 0.5,
+          "w": 0.5
+        }
+      },
+      "features": [
+        {
+          "type": "taper",
+          "face": "top",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "08617a00-db58-4c61-99b3-604409552898"
+        },
+        {
+          "type": "taper",
+          "face": "bottom",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "66289f2a-9456-4634-8adb-e5cf4196bf2d"
+        },
+        {
+          "type": "taper",
+          "face": "front",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "948326f4-f9d2-44a8-95c4-8036f02cbe13"
+        },
+        {
+          "type": "taper",
+          "face": "back",
+          "towardEnd": "end",
+          "startPosition": "3/4",
+          "endOffset": "1/2",
+          "id": "ba896fdc-8cf7-45b3-bba2-6b5ee21fbee6"
+        }
+      ]
+    },
+    {
+      "id": "54316622-86d3-4b0d-9de0-1d8de1375af0",
+      "name": "Record",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "f4e22654-173f-47b5-8525-79e2dd7228e8",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 78.62568476307897,
+          "y": -11.375,
+          "z": 17.222294875005936
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.743144825477394,
+          "z": 0,
+          "w": 0.6691306063588581
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "dde61f73-dcd3-4fc0-b555-2c78e940b239",
+      "name": "Record (Cubby 1)",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "f4e22654-173f-47b5-8525-79e2dd7228e8",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 6.5,
+          "y": -11.375,
+          "z": 17.2
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.6755902076156602,
+          "z": 0,
+          "w": 0.7372773368101241
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "34f98b31-43e0-418b-b449-2f2cb790d369",
+      "name": "Record Box Set",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "f4e22654-173f-47b5-8525-79e2dd7228e8",
+      "stock": "solid",
+      "length": "13 1/16",
+      "width": "13 1/16",
+      "thickness": "1",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 68.25,
+          "y": -11.8125,
+          "z": 17.222294875005936
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865472,
+          "z": 0,
+          "w": 0.7071067811865474
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "5364b543-531a-4c8c-a0b9-4b2542c83e91",
+      "name": "Record Box Set (Cubby 2)",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "f4e22654-173f-47b5-8525-79e2dd7228e8",
+      "stock": "solid",
+      "length": "13 1/16",
+      "width": "13 1/16",
+      "thickness": "1",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 19.25,
+          "y": -11.8,
+          "z": 17
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7193398003386511,
+          "z": 0,
+          "w": 0.6946583704589974
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "99c126d4-5d9f-43a3-8b41-a05b1ce7aa19",
+      "name": "Record 3",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "652b1486-80f6-4f69-a1de-cf774e2f0f68",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 78.21556935458116,
+          "y": -11.375,
+          "z": 16.929839107149302
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.814115518356319,
+          "z": 0,
+          "w": 0.5807029557109397
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "606255d3-b30d-4355-8910-5f596f63ac98",
+      "name": "Record 3 (Cubby 3)",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "652b1486-80f6-4f69-a1de-cf774e2f0f68",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 32.5,
+          "y": -11.375,
+          "z": 16.9
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.8191520442889918,
+          "z": 0,
+          "w": 0.573576436351046
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "cadafe99-2a11-429e-9f11-338ee4c93337",
+      "name": "Record 2",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "d430b2e6-e558-498f-8ffd-96d6402e453c",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 78.44140068363777,
+          "y": -11.375,
+          "z": 17.10387234580421
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7826081568524137,
+          "z": 0,
+          "w": 0.6225146366376194
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "e594560f-159f-44ff-ae86-dca621dae94c",
+      "name": "Record 2 (Cubby 4)",
+      "groupPath": "Record Prop",
+      "groupId": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "d430b2e6-e558-498f-8ffd-96d6402e453c",
+      "stock": "solid",
+      "length": "12.5",
+      "width": "12.5",
+      "thickness": "1/8",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 45.75,
+          "y": -11.375,
+          "z": 17.1
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.754709580222772,
+          "z": 0,
+          "w": 0.6560590289905073
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "112f4563-b518-4dd6-a2db-33b59904a134",
+      "name": "Divider 1",
+      "groupPath": "Carcase/Dividers",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness + 2 * DadoDepth",
+      "width": "CarcaseDepth - DividerSetback - BandingThickness - 1/4",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 12.5,
+          "y": -11.25,
+          "z": 18.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "98fcb1e2-bab3-4bea-bca0-affec55bb9a7",
+      "name": "Divider 5",
+      "groupPath": "Carcase/Dividers",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness + 2 * DadoDepth",
+      "width": "CarcaseDepth - DividerSetback - BandingThickness - 1/4",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 65.5,
+          "y": -11.25,
+          "z": 18.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "79db03fb-6239-4c9d-ad19-38c90685f990",
+      "name": "Divider 4",
+      "groupPath": "Carcase/Dividers",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness + 2 * DadoDepth",
+      "width": "CarcaseDepth - DividerSetback - BandingThickness - 1/4",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 52.25,
+          "y": -11.25,
+          "z": 18.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "e9e49655-9074-4eb0-ab9d-f7868bd4401f",
+      "name": "Divider 3",
+      "groupPath": "Carcase/Dividers",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness + 2 * DadoDepth",
+      "width": "CarcaseDepth - DividerSetback - BandingThickness - 1/4",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 39,
+          "y": -11.25,
+          "z": 18.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "d340831c-fcfd-4f70-8d2f-ec9a7eac97d4",
+      "name": "Divider 2",
+      "groupPath": "Carcase/Dividers",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "CarcaseHeight - 2 * BandingThickness + 2 * DadoDepth",
+      "width": "CarcaseDepth - DividerSetback - BandingThickness - 1/4",
+      "thickness": "3/4",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 25.75,
+          "y": -11.25,
+          "z": 18.5
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "9e0381a4-7f5f-4fed-b21b-4ad0e9625a03",
+      "name": "D1 Front Banding",
+      "groupPath": "Carcase/Dividers/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 12.5,
+          "y": -12,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "5da02515-2df7-487e-bb4a-9da8f2624247",
+      "name": "D5 Front Banding",
+      "groupPath": "Carcase/Dividers/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 65.5,
+          "y": -12,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "53c3f750-ed20-4f88-9980-d72d230b00b9",
+      "name": "D4 Front Banding",
+      "groupPath": "Carcase/Dividers/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 52.25,
+          "y": -12,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "a36281a2-f397-4771-a4f4-2628db86c55e",
+      "name": "D3 Front Banding",
+      "groupPath": "Carcase/Dividers/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 39,
+          "y": -12,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "a412c188-134d-4031-b3c9-3dbcf33a91f8",
+      "name": "D2 Front Banding",
+      "groupPath": "Carcase/Dividers/Banding",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 25.75,
+          "y": -12,
+          "z": 18.25
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0.7071067811865476,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "82514d97-8919-4318-8ab7-5302b6539d29",
+      "name": "Really Comfy Cushion",
+      "groupPath": "Cushion",
+      "layerId": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "quantity": 1,
+      "materialId": "5b69b41d-1970-4331-bae1-50064dfc105f",
+      "stock": "solid",
+      "length": "CarcaseWidth * 3/4",
+      "width": "CarcaseDepth - 2 * FiddleSetback - 2 * FiddleSize",
+      "thickness": "CushionThickness",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 0.25,
+          "y": -14,
+          "z": 19
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "61ebe4af-9dda-454a-9bd6-6b3504f7deb0",
+      "name": "Left Door Panel",
+      "groupPath": "Doors/Left",
+      "groupId": "db68454c-bbec-41ae-9df2-8a8c0643f2bf",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "(CarcaseWidth - 2 * BandingThickness) / 2 - 2 * BandingThickness + DoorOverlap",
+      "width": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "thickness": "3/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 0.75,
+          "y": -13.5,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": 0.7071067811865476,
+          "y": 0,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "c7312d76-55e5-45bc-b880-9be8f3031828",
+      "name": "Right Door Panel",
+      "groupPath": "Doors/Right",
+      "groupId": "a92c2122-79da-4f11-8c9e-323531b96678",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "e791c93c-4ce2-40b4-9fd2-5d4208d951c3",
+      "stock": "sheet",
+      "length": "(CarcaseWidth - 2 * BandingThickness) / 2 - 2 * BandingThickness + DoorOverlap",
+      "width": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "thickness": "3/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 39.75,
+          "y": -12.3125,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": 0.7071067811865476,
+          "y": 0,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "e46d4479-4051-4df3-b054-23dd0ad57904",
+      "name": "LD Left Banding",
+      "groupPath": "Doors/Left/Banding",
+      "groupId": "db68454c-bbec-41ae-9df2-8a8c0643f2bf",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 0.75,
+          "y": -14.25,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": -0,
+          "y": -0.7071067811865476,
+          "z": -0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "8a7ea6ee-4b11-425e-b93a-142a12cb4ac6",
+      "name": "LD Right Banding",
+      "groupPath": "Doors/Left/Banding",
+      "groupId": "db68454c-bbec-41ae-9df2-8a8c0643f2bf",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 39.75,
+          "y": -14.25,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": -0,
+          "y": -0.7071067811865476,
+          "z": -0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "016d0568-990e-4571-a62f-4eee1dc42fb2",
+      "name": "RD Left Banding",
+      "groupPath": "Doors/Right/Banding",
+      "groupId": "a92c2122-79da-4f11-8c9e-323531b96678",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 39.75,
+          "y": -13.0625,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": -0,
+          "y": -0.7071067811865476,
+          "z": -0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "bab9ae95-4ff9-4ae8-a04a-9f1036107330",
+      "name": "RD Right Banding",
+      "groupPath": "Doors/Right/Banding",
+      "groupId": "a92c2122-79da-4f11-8c9e-323531b96678",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseHeight - 2 * BandingThickness + DoorGrooveDepthTop - DoorClearance",
+      "width": "BandingThickness",
+      "thickness": "BandingThickness",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 78.75,
+          "y": -13.0625,
+          "z": 4.5
+        },
+        "rotation": {
+          "x": -0,
+          "y": -0.7071067811865476,
+          "z": -0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": []
+    },
+    {
+      "id": "963374fc-c8c4-41e7-9ae7-02eefd480b66",
+      "name": "Front Fiddle",
+      "groupPath": "Carcase/Top/Fiddles",
+      "groupId": "8a8325d3-dd6b-451b-a5f9-c135aa595853",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseWidth - 2 * FiddleSetback",
+      "width": "FiddleSize",
+      "thickness": "FiddleSize",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -0.5,
+          "y": -14.75,
+          "z": 19
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "b4463bf0-1ade-4248-9913-1952a84ff93e"
+        },
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "1cb9c7b1-cf56-425b-822e-6a22b5e6352c"
+        },
+        {
+          "type": "edgeProfile",
+          "edge": "frontTop",
+          "profile": "roundover",
+          "size": "5/16",
+          "id": "83875027-25ff-4eda-a257-efb57420a0ad"
+        }
+      ],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "53130c6f-ab65-4ed3-b76c-daa0eb3bdefb",
+      "name": "Back Fiddle",
+      "groupPath": "Carcase/Top/Fiddles",
+      "groupId": "8a8325d3-dd6b-451b-a5f9-c135aa595853",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseWidth - 2 * FiddleSetback",
+      "width": "FiddleSize",
+      "thickness": "FiddleSize",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": -0.5,
+          "y": 0.5,
+          "z": 19
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "d5b3262a-8ca0-4d0d-bce2-8fa8f9acf0de"
+        },
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "542f3b67-5372-4874-ba6d-33824011406d"
+        },
+        {
+          "type": "edgeProfile",
+          "edge": "backTop",
+          "profile": "roundover",
+          "size": "5/16",
+          "id": "d5cbcacf-778d-446c-9c83-355e040db1c7"
+        }
+      ],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "5862bd70-f183-4ea6-8db1-96f50c0e70a9",
+      "name": "Left Fiddle",
+      "groupPath": "Carcase/Top/Fiddles",
+      "groupId": "8a8325d3-dd6b-451b-a5f9-c135aa595853",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseDepth - 2 * FiddleSetback",
+      "width": "FiddleSize",
+      "thickness": "FiddleSize",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 0.25,
+          "y": -14.75,
+          "z": 19
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0.7071067811865476,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "650e9855-9b9c-4d7e-98be-0466bd9ff639"
+        },
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "back",
+          "id": "3c6f9b36-b11e-48fc-a71a-0d73ce377c57"
+        },
+        {
+          "type": "edgeProfile",
+          "edge": "backTop",
+          "profile": "roundover",
+          "size": "5/16",
+          "id": "0b71aef7-f76d-4787-8fbd-e32c98af1b0c"
+        }
+      ],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "3718b3dd-3eb2-4b9c-9395-4308435fc6c3",
+      "name": "Right Fiddle",
+      "groupPath": "Carcase/Top/Fiddles",
+      "groupId": "8a8325d3-dd6b-451b-a5f9-c135aa595853",
+      "quantity": 1,
+      "materialId": "1eeffe7f-7dd2-44f2-908b-363a8856feff",
+      "stock": "solid",
+      "length": "CarcaseDepth - 2 * FiddleSetback",
+      "width": "FiddleSize",
+      "thickness": "FiddleSize",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 79.25,
+          "y": -14.75,
+          "z": 19
+        },
+        "rotation": {
+          "x": 0,
+          "y": 0,
+          "z": 0.7071067811865476,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [
+        {
+          "type": "miterCut",
+          "end": "start",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "5bd1366f-870c-45d0-b430-5fa71e5c1308"
+        },
+        {
+          "type": "miterCut",
+          "end": "end",
+          "angleDegrees": "45",
+          "tilt": "acrossWidth",
+          "longSide": "front",
+          "id": "bcee33f1-6418-4d72-acea-46b213470bc2"
+        },
+        {
+          "type": "edgeProfile",
+          "edge": "frontTop",
+          "profile": "roundover",
+          "size": "5/16",
+          "id": "65065523-2c19-483a-8c09-7f512dac4e97"
+        }
+      ],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "2ea5341c-1dab-467c-afbf-ce0fe2cb32ed",
+      "name": "Clasp",
+      "groupPath": "Doors/Hardware",
+      "groupId": "c1275738-1858-4d98-9d9a-a54615ad3949",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "5c4cde14-6193-469f-bf78-52fd3bde041a",
+      "stock": "solid",
+      "length": "4.72",
+      "width": "1.5",
+      "thickness": "1/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 76,
+          "y": -12.85187,
+          "z": 13.86
+        },
+        "rotation": {
+          "x": 0.5000000000000001,
+          "y": 0.5000000000000001,
+          "z": -0.5000000000000001,
+          "w": 0.5000000000000001
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "e5c97fff-7e2c-4acd-870b-8132976033ae",
+      "name": "Clasp (Left Door)",
+      "groupPath": "Doors/Hardware",
+      "groupId": "211d7ad7-6da7-4bf0-a5dd-32e2e97927c6",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "5c4cde14-6193-469f-bf78-52fd3bde041a",
+      "stock": "solid",
+      "length": "4.72",
+      "width": "1.5",
+      "thickness": "1/4",
+      "grainMatters": true,
+      "placement": {
+        "translation": {
+          "x": 1.25,
+          "y": -14.03937,
+          "z": 13.86
+        },
+        "rotation": {
+          "x": 0.5000000000000001,
+          "y": 0.5000000000000001,
+          "z": -0.5000000000000001,
+          "w": 0.5000000000000001
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "e860d063-c642-462a-8548-ac4626832eff",
+      "name": "Clasp Finger Grab",
+      "groupPath": "Doors/Hardware",
+      "groupId": "c1275738-1858-4d98-9d9a-a54615ad3949",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "0d3016de-a6fe-40ec-8b76-ee37ca011e9f",
+      "stock": "solid",
+      "length": "1",
+      "width": "3.86",
+      "thickness": "0.14",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 76.25,
+          "y": -13.00124,
+          "z": 9.57
+        },
+        "rotation": {
+          "x": 0.7071067811865476,
+          "y": 0,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    },
+    {
+      "id": "5d1cf4e8-d950-4636-8d02-e5cf1f0823f5",
+      "name": "Clasp Finger Grab (Left Door)",
+      "groupPath": "Doors/Hardware",
+      "groupId": "211d7ad7-6da7-4bf0-a5dd-32e2e97927c6",
+      "layerId": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "quantity": 1,
+      "materialId": "0d3016de-a6fe-40ec-8b76-ee37ca011e9f",
+      "stock": "solid",
+      "length": "1",
+      "width": "3.86",
+      "thickness": "0.14",
+      "grainMatters": false,
+      "placement": {
+        "translation": {
+          "x": 1.5,
+          "y": -14.18874,
+          "z": 9.57
+        },
+        "rotation": {
+          "x": 0.7071067811865476,
+          "y": 0,
+          "z": 0,
+          "w": 0.7071067811865476
+        }
+      },
+      "features": [],
+      "excludeFromOutputs": true
+    }
+  ],
+  "joints": [
+    {
+      "type": "buttJoint",
+      "partAId": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "partBId": "43344a41-1407-44c5-aca3-6e1806f92b5c",
+      "id": "66cc70c9-f461-4af8-b449-728f1964bde7",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "112f4563-b518-4dd6-a2db-33b59904a134",
+      "partBId": "9e0381a4-7f5f-4fed-b21b-4ad0e9625a03",
+      "id": "5bbc2a53-de99-41da-99bb-9b20e4b1ecec",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "d340831c-fcfd-4f70-8d2f-ec9a7eac97d4",
+      "partBId": "a412c188-134d-4031-b3c9-3dbcf33a91f8",
+      "id": "0fccb905-6131-4197-a561-b1731a98a639",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "e9e49655-9074-4eb0-ab9d-f7868bd4401f",
+      "partBId": "a36281a2-f397-4771-a4f4-2628db86c55e",
+      "id": "893a6da0-2c68-4351-b32a-26be5472b42e",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "79db03fb-6239-4c9d-ad19-38c90685f990",
+      "partBId": "53c3f750-ed20-4f88-9980-d72d230b00b9",
+      "id": "8cc38c7d-a412-4563-8415-a7d6910ce01a",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "98fcb1e2-bab3-4bea-bca0-affec55bb9a7",
+      "partBId": "5da02515-2df7-487e-bb4a-9da8f2624247",
+      "id": "165d6f32-6c3f-4351-af82-368f00fd17bd",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "61ebe4af-9dda-454a-9bd6-6b3504f7deb0",
+      "partBId": "e46d4479-4051-4df3-b054-23dd0ad57904",
+      "id": "909170c5-a363-42e9-9731-6b8fc1e5c677",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "61ebe4af-9dda-454a-9bd6-6b3504f7deb0",
+      "partBId": "8a7ea6ee-4b11-425e-b93a-142a12cb4ac6",
+      "id": "440f2840-acf6-4baf-be69-14dd26ab67ea",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "partBId": "963374fc-c8c4-41e7-9ae7-02eefd480b66",
+      "id": "6205c86f-a391-44d4-bcce-dafad136fb0d",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "partBId": "53130c6f-ab65-4ed3-b76c-daa0eb3bdefb",
+      "id": "98b6e50b-2f9c-483b-b6bf-08b124109728",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "partBId": "5862bd70-f183-4ea6-8db1-96f50c0e70a9",
+      "id": "663f28a5-ec1e-4d64-a523-5eb97b8938cf",
+      "generatedFeatureIds": []
+    },
+    {
+      "type": "buttJoint",
+      "partAId": "78c64d95-c7c5-4990-967b-885e9bd05dcb",
+      "partBId": "3718b3dd-3eb2-4b9c-9395-4308435fc6c3",
+      "id": "42136c7d-e1f5-4cfd-99be-5d7722d3be95",
+      "generatedFeatureIds": []
+    }
+  ],
+  "groups": [
+    {
+      "id": "c1275738-1858-4d98-9d9a-a54615ad3949",
+      "name": "Right Door Clasp",
+      "parentGroupId": "a92c2122-79da-4f11-8c9e-323531b96678"
+    },
+    {
+      "id": "211d7ad7-6da7-4bf0-a5dd-32e2e97927c6",
+      "name": "Left Door Clasp",
+      "parentGroupId": "db68454c-bbec-41ae-9df2-8a8c0643f2bf"
+    },
+    {
+      "id": "db68454c-bbec-41ae-9df2-8a8c0643f2bf",
+      "name": "Entire Left Door"
+    },
+    {
+      "id": "a92c2122-79da-4f11-8c9e-323531b96678",
+      "name": "Entire Right Door"
+    },
+    {
+      "id": "5c145e72-a9fe-470c-92eb-88a86d29c1ea",
+      "name": "Records"
+    },
+    {
+      "id": "8a8325d3-dd6b-451b-a5f9-c135aa595853",
+      "name": "Fiddles"
+    }
+  ],
+  "layers": [
+    {
+      "id": "6316beaf-4527-42f2-95f7-92b595f6b281",
+      "name": "Extras"
+    },
+    {
+      "id": "e1c4066d-a9a4-4fc6-bc80-4374b0bb81bb",
+      "name": "Doors"
+    }
+  ],
+  "hardware": [
+    {
+      "id": "000e8743-24ac-401a-8d93-5bf2d4c587ca",
+      "name": "Euro Hinge",
+      "category": "Hinges",
+      "size": "35mm",
+      "quantity": 6,
+      "partId": "61ebe4af-9dda-454a-9bd6-6b3504f7deb0"
+    },
+    {
+      "id": "a14c08b9-e43e-479a-b165-fb5f68daf5f3",
+      "name": "Euro Hinge",
+      "category": "Hinges",
+      "size": "35mm",
+      "quantity": 2,
+      "partId": "c7312d76-55e5-45bc-b880-9be8f3031828"
+    },
+    {
+      "id": "64e1cd8a-5570-4bc6-b3a8-279313c403a6",
+      "name": "Shelf Pin",
+      "category": "Hardware",
+      "size": "5mm",
+      "quantity": 8
+    }
+  ],
+  "referenceImages": []
+}
