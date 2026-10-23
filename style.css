@@ -24,12 +24,12 @@ body {
   font: 17px/1.6 Georgia, "Times New Roman", serif;
 }
 header, main, footer {
-  max-width: 44rem;
+  max-width: 50rem;
   margin: 0 auto;
   padding: 0 16px;
 }
 header { padding-top: 2.5rem; }
-header nav a { margin-right: 1.25rem; }
+header nav { display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; }
 h1, h2 { font-family: "Segoe UI", system-ui, sans-serif; line-height: 1.2; }
 h1 { font-size: 2rem; margin: 0.5rem 0 0.25rem; }
 h2 { font-size: 1.25rem; margin-top: 2rem; }
@@ -53,3 +53,26 @@ footer {
   font-size: 0.9rem;
 }
 .meta { color: var(--muted); font-size: 0.95rem; }
+
+/* home page */
+.hero { display: flex; gap: 1.5rem; align-items: flex-start; margin-top: 1.5rem; }
+.hero-icon { flex: 0 0 112px; width: 112px; height: 112px; border-radius: 22px; }
+.wordmark { font-family: Rockwell, "Roboto Slab", Georgia, serif; font-size: 3rem; margin: 0; letter-spacing: 0.01em; }
+.wordmark span { color: #c97732; }
+.motto { margin: 0.1rem 0 0.75rem; font-family: "Segoe UI", system-ui, sans-serif; font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.hero .tagline { margin: 0 0 1rem; color: var(--text); }
+.actions { margin: 0 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.btn { display: inline-block; padding: 0.55rem 1.1rem; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-family: "Segoe UI", system-ui, sans-serif; font-weight: 600; }
+.btn:hover { filter: brightness(1.08); }
+.btn-quiet { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+@media (max-width: 560px) { .hero { flex-direction: column; } .hero-icon { width: 80px; height: 80px; flex-basis: 80px; } .wordmark { font-size: 2.4rem; } }
+.shot { margin: 2rem 0 0; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--rule); box-shadow: 0 12px 32px rgba(0,0,0,0.16); }
+.shot figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.6rem; }
+.features { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem; }
+.features li { background: var(--card); border: 1px solid var(--rule); border-left: 4px solid #c97732; border-radius: 8px; padding: 0.8rem 1rem; font-size: 0.97rem; }
+.features strong { display: block; font-family: "Segoe UI", system-ui, sans-serif; margin-bottom: 0.2rem; }
+.video { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 1rem 0 0.5rem; background: #000; border-radius: 10px; overflow: hidden; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 2rem; }
+.cards .card { margin: 0; }

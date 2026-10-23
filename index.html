@@ -6,41 +6,61 @@
 <title>SawDust — A Woodworking Design Tool</title>
 <meta name="description" content="SawDust is a Windows app for designing furniture and shop projects: parametric parts and joinery, cut lists, sheet layouts and shop drawings.">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 </head>
 <body>
 <header>
   <nav><a href="index.html">Home</a><a href="manual.html">User Manual</a><a href="tutorials.html">Tutorials</a><a href="gallery.html">Gallery</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
-  <h1>SawDust</h1>
-  <p class="tagline">A woodworking design tool for Windows</p>
+  <div class="hero">
+    <img class="hero-icon" src="assets/icon.svg" alt="" width="112" height="112">
+    <div>
+      <h1 class="wordmark">Saw<span>Dust</span></h1>
+      <p class="motto">Design &bull; Plan &bull; Build</p>
+      <p class="tagline">A woodworking design tool for Windows. Draw a piece as boards, panels and joints; take the cut list, sheet layout, shop drawings and labels to the bench.</p>
+      <p class="actions"><a class="btn" href="https://apps.microsoft.com/detail/9PBK1LRK9DVN">Get it on the Microsoft Store</a> <a class="btn btn-quiet" href="tutorials.html">Watch the tutorial</a></p>
+      <p class="meta">30-day, full-featured free trial. No subscription.</p>
+    </div>
+  </div>
 </header>
 <main>
-  <p>SawDust is a desktop app for designing home woodworking projects. You describe a piece as boards, panels and joints, with dimensions that can be expressions of a few named parameters, and SawDust produces the shop outputs from that: cut lists with cost estimates, sheet-goods layouts, dimensioned shop drawings, assembly steps, DXF files for a CNC router, and part labels.</p>
-  <p>An optional AI Apprentice can draft a design from a photo or a description and edit the open project by conversation. It runs on your own Anthropic API key, so nothing is sent anywhere unless you connect it.</p>
+  <figure class="shot">
+    <img src="assets/screenshot-bedside-cabinet.jpg" alt="SawDust showing a cherry bedside cabinet in the 3D viewport, with the parts tree on the left and the layers panel on the right" width="1600" height="860" loading="lazy">
+    <figcaption>The bedside cabinet from the tutorial: a face frame, a plywood case, a drawer over a door. Every part is listed on the left; every dimension is an expression of a few named parameters.</figcaption>
+  </figure>
 
-  <div class="card">
-    <h2>Get SawDust</h2>
-    <p>SawDust is sold through the Microsoft Store with a 30-day, full-featured free trial. There is no subscription.</p>
-    <p><a href="https://apps.microsoft.com/detail/9PBK1LRK9DVN">SawDust on the Microsoft Store</a></p>
+  <h2>What you get from one design</h2>
+  <ul class="features">
+    <li><strong>Cut list with costs</strong> Every part, final size, rough size and board feet, priced from your own material list.</li>
+    <li><strong>Sheet layouts</strong> Plywood parts nested onto sheets, with the offcuts, as a drawing and a DXF.</li>
+    <li><strong>Shop drawings</strong> Dimensioned views of each assembly, printable or as PDF.</li>
+    <li><strong>Joinery that checks itself</strong> Dados, rabbets, pocket screws, dowels and more. SawDust will not let you draw a joint that cannot be cut.</li>
+    <li><strong>Parameters</strong> Name a few measurements and build on them; resize the whole piece by changing one number.</li>
+    <li><strong>CNC and labels</strong> DXF files for a router, assembly steps, and part labels for the stack at the bench.</li>
+  </ul>
+
+  <h2>See it built, start to finish</h2>
+  <div class="video">
+    <iframe src="https://www.youtube-nocookie.com/embed/8_fUGlA2TaY" title="SawDust tutorial: design a bedside cabinet from scratch" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
   </div>
+  <p class="meta">Forty minutes, twelve chapters, each also its own short video on the <a href="tutorials.html">tutorials page</a> and the <a href="https://www.youtube.com/@SawDustDesignTool">SawDust Design Tool channel</a>.</p>
 
-  <div class="card">
-    <h2>User manual</h2>
-    <p>The same manual that ships in the app under <strong>Help &rarr; User Manual</strong>, readable here before you install: <a href="manual.html">SawDust User Manual</a>.</p>
-  </div>
-
-  <div class="card">
-    <h2>Video tutorials</h2>
-    <p>A bedside cabinet built start to finish in twelve chapters, from an empty project to the cut list and shop drawings: <a href="tutorials.html">watch the tutorial</a>, or subscribe to the <a href="https://www.youtube.com/@SawDustDesignTool">SawDust Design Tool channel</a> on YouTube.</p>
-  </div>
-
-  <div class="card">
-    <h2>Gallery</h2>
-    <p>Designs shared by SawDust users, free to open and adapt, starting with a walnut record-storage bench: <a href="gallery.html">browse the gallery</a>.</p>
-  </div>
-
-  <div class="card">
-    <h2>Help and feedback</h2>
-    <p>Found a bug, or want to suggest something? See the <a href="support.html">support page</a>. Questions about your data are answered in the <a href="privacy.html">privacy policy</a>.</p>
+  <div class="cards">
+    <div class="card">
+      <h2>AI Apprentice</h2>
+      <p>Optional. Drafts a design from a photo or a description and edits the open project by conversation. It runs on your own Anthropic API key, so nothing is sent anywhere unless you connect it.</p>
+    </div>
+    <div class="card">
+      <h2>User manual</h2>
+      <p>The same manual that ships in the app under <strong>Help &rarr; User Manual</strong>, readable here before you install: <a href="manual.html">SawDust User Manual</a>.</p>
+    </div>
+    <div class="card">
+      <h2>Gallery</h2>
+      <p>Designs shared by SawDust users, free to open and adapt, starting with a walnut record-storage bench: <a href="gallery.html">browse the gallery</a>.</p>
+    </div>
+    <div class="card">
+      <h2>Help and feedback</h2>
+      <p>Found a bug, or want to suggest something? See the <a href="support.html">support page</a>. Questions about your data are answered in the <a href="privacy.html">privacy policy</a>.</p>
+    </div>
   </div>
 </main>
 <footer>
